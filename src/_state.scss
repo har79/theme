@@ -3,18 +3,16 @@
 
 @mixin focus($internal-outline: false, $radius: 2px) {
   position: relative;
-
   -webkit-tap-highlight-color: transparent;
-
   outline: none;
 
   &::after {
     content: '';
+
     @include layout.fit(if($internal-outline, 2px, -2px));
 
     border-radius: calc($radius + 2px);
-
-    outline: 2px solid currentColor;
+    outline: 2px solid currentcolor;
   }
 }
 
@@ -40,6 +38,10 @@
   $internal-outline: false,
   $radius: 2px
 ) {
+  &:where(:focus-visible) {
+    @include focus($internal-outline: $internal-outline, $radius: $radius);
+  }
+
   &:link {
     @include color-with-hover($color, $internal-outline: $internal-outline, $radius: $radius);
   }
@@ -51,18 +53,12 @@
       $radius: $radius
     );
   }
-
-  &:where(:focus-visible) {
-    @include focus($internal-outline: $internal-outline, $radius: $radius);
-  }
 }
 
 @mixin hidden {
   position: absolute;
   height: 1px;
   width: 1px;
-
   overflow: hidden;
-
   clip: rect(0 0 0 0);
 }

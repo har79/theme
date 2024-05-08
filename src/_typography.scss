@@ -1,11 +1,7 @@
 @use 'math';
 @use 'color';
 
-$font-family:
-  Futura,
-  ‘Century Gothic’,
-  AppleGothic,
-  sans-serif;
+$font-family: futura, 'century gothic', applegothic, sans-serif;
 
 @mixin font($scale, $weight: 400) {
   $size: math.pow(math.$phi, $scale * 0.5) * 1rem;

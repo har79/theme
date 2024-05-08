@@ -1,5 +1,4 @@
 @forward 'sass:math' hide ceil, round;
-
 @use 'sass:math';
 
 $phi: math.div(1 + math.sqrt(5), 2);

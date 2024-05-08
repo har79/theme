@@ -2,7 +2,6 @@
 @use 'math';
 
 $border: 1px solid color.$border;
-
 $logo-background: linear-gradient(
   to right,
   transparent 57%,
@@ -13,12 +12,10 @@ $logo-background: linear-gradient(
 );
 $logo-height: 6rem;
 $logo-width: math.round(calc($logo-height * 655 / 286), 0.01);
-
 $section-width: 75rem;
 $section-padding: calc(1rem + max(0px, (100% - $section-width) / 2));
 $border-width: $section-width + 2 * 4rem;
 $border-overflow: max(0px, (100% - $border-width) / 2);
-
 $section-border: linear-gradient(
     to right,
     transparent $border-overflow,
@@ -29,14 +26,11 @@ $section-border: linear-gradient(
 
 @mixin fit($spacing: 0) {
   position: absolute;
-  top: $spacing;
-  right: $spacing;
-  bottom: $spacing;
-  left: $spacing;
+  inset: $spacing;
 }
 
 @mixin mobile {
-  @media (max-width: 40rem) {
+  @media (width <= 40rem) {
     @content;
   }
 }
