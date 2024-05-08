@@ -1,0 +1,27 @@
+{
+  "devDependencies": {
+    "eslint": "^9.2.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^9.1.0",
+    "har79-config": "github:har79/config",
+    "license-checker": "^25.0.1",
+    "oss-attribution-generator": "^1.7.1",
+    "prettier": "^3.2.5",
+    "prettier-plugin-jsdoc": "^1.3.0"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "clean": "rm -r coverage build oss-attribution *.tsbuildinfo ||:",
+    "fix:format": "prettier --write .",
+    "fix:lint": "eslint --fix .",
+    "fix": "npm run fix:format && npm run fix:lint",
+    "license:check": "license-checker --production --onlyAllow 'MIT;ISC;Apache-2.0'",
+    "license:attribution": "generate-attribution",
+    "license": "npm run license:check && npm run license:attribution",
+    "preversion": "npm run fix",
+    "postversion": "git push && git push --tags",
+    "prepare": "npm run clean && npm run license:check"
+  }
+}
