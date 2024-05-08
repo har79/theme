@@ -25,7 +25,7 @@
     "license:check": "license-checker --production --onlyAllow 'MIT;ISC;Apache-2.0'",
     "license:attribution": "generate-attribution",
     "license": "npm run license:check && npm run license:attribution",
-    "preversion": "npm run fix",
+    "preversion": "npm run license:check && npm run fix",
     "postversion": "git push && git push --tags",
     "prepare": "npm run clean && npm run license:check",
     "updates": "npm-check-updates"
