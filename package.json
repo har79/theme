@@ -29,5 +29,6 @@
     "postversion": "git push && git push --tags",
     "prepare": "npm run clean && npm run license:check",
     "updates": "npm-check-updates"
-  }
+  },
+  "version": "0.1.0"
 }
