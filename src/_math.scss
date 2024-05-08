@@ -1,0 +1,13 @@
+@forward 'sass:math' hide ceil, round;
+
+@use 'sass:math';
+
+$phi: math.div(1 + math.sqrt(5), 2);
+
+@function ceil($n, $m: 1) {
+  @return math.ceil(math.div($n, $m)) * $m;
+}
+
+@function round($n, $m: 1) {
+  @return math.round(math.div($n, $m)) * $m;
+}
