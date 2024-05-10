@@ -13,10 +13,10 @@
     "stylelint-config-standard-scss": "^13.1.0"
   },
   "files": [
-    "src"
+    "**/*.scss"
   ],
-  "main": "src/_index.scss",
-  "style": "src/_index.scss",
+  "main": "_index.scss",
+  "style": "_index.scss",
   "scripts": {
     "clean": "rm -r coverage build oss-attribution *.tsbuildinfo ||:",
     "fix:format": "prettier --write .",
