@@ -1,0 +1,87 @@
+@use 'sass:color';
+@use 'sass:math';
+
+@function channel-luminance($channel) {
+  $srgb: math.div($channel, 255);
+
+  @return if(
+    $srgb <= 0.0393,
+    math.div($srgb, 12.92),
+    math.pow(math.div(($srgb + 0.055), 1.055), 2.4)
+  );
+}
+
+@function luminance($color) {
+  $r: channel-luminance(color.red($color));
+  $g: channel-luminance(color.green($color));
+  $b: channel-luminance(color.blue($color));
+
+  @return 0.2126 * $r + 0.7152 * $g + 0.0722 * $b;
+}
+
+@function contrast-ratio($c1, $c2) {
+  @if color.alpha($c1) != 1 or color.alpha($c2) != 1 {
+    @error "Contrast ratio of non-opaque colors is not supported: #{$c1}, #{$c2}";
+  }
+
+  $r1: luminance($c1) + 0.05;
+  $r2: luminance($c2) + 0.05;
+
+  @return if($r1 > $r2, math.div($r1, $r2), math.div($r2, $r1));
+}
+
+@function check-contrast($color, $background: $background, $contrast: 4.5) {
+  $c: contrast-ratio($color, $background);
+
+  @if $c < $contrast {
+    @error "expected contrast >#{$contrast}; got #{$c} (#{$color} on #{$background})";
+  }
+
+  @return $color;
+}
+
+@function darken($color, $contrast) {
+  $min: 0%;
+  $max: if($contrast < 0, 100%, -100%);
+  $contrast: math.abs($contrast);
+  $c: $color;
+  $prev: $color;
+  $r: 21;
+
+  @while true {
+    $test: math.div(($min + $max), 2);
+    $next: color.scale($color, $lightness: $test);
+
+    @if $next == $c or $next == $prev {
+      @return check-contrast($c, $background: $color, $contrast: $contrast);
+    }
+
+    $rn: contrast-ratio($color, $next);
+
+    @if $rn >= $contrast and $rn < $r {
+      $c: $next;
+      $r: $rn;
+    }
+
+    $prev: next;
+
+    @if $rn < $contrast {
+      $min: $test;
+    } @else {
+      $max: $test;
+    }
+  }
+}
+
+@function hue($hue, $saturation: 67%, $contrast: 4.5) {
+  @return darken(hsl($hue, $saturation, 100%), $contrast);
+}
+
+$background: white;
+$body: hue(0, 0%, 7);
+$icon: hue(0, 0%);
+$border: hue(0, 0%, 3);
+$primary: hue(120);
+$secondary: hue(300);
+$action: hue(210);
+$visited: hue(255);

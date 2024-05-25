@@ -1,0 +1,33 @@
+@use 'math';
+@use 'color';
+
+$font-family: futura, sans-serif;
+
+@mixin font($scale, $weight: 400) {
+  $size: math.pow(math.$phi, $scale * 0.5) * 1rem;
+  $height: math.ceil($size + 0.5rem, 0.5);
+
+  color: color.$body;
+  font: $weight #{math.round($size, 0.1)} / #{$height} $font-family;
+  text-indent: calc(0.8px - 0.1em);
+}
+
+@mixin title {
+  @include font(3);
+}
+
+@mixin heading {
+  @include font(2);
+}
+
+@mixin subheading {
+  @include font(1, $weight: 600);
+}
+
+@mixin body {
+  @include font(1);
+}
+
+@mixin small {
+  @include font(0);
+}
