@@ -30,5 +30,8 @@
     "postversion": "git push && git push --tags",
     "prepare": "npm run clean && npm run license:check"
   },
-  "version": "0.1.2"
+  "version": "0.1.2",
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  }
 }
