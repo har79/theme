@@ -1,3 +1,132 @@
+@charset "utf-8";
+
 @forward 'normalize';
 
 @forward 'header';
+
+@use 'animation';
+@use 'color';
+@use 'layout';
+@use 'state';
+@use 'typography';
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+// https://www.paulirish.com/2012/box-sizing-border-box-ftw/
+// Apply a natural box layout model to all elements, but allowing components to change.
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  // Always show scrollbar to prevent layout jumping.
+  overflow-y: scroll;
+
+  @include typography.body;
+
+  // TODO fade out on navigate?
+  // @include animation.fade-in;
+}
+
+.skip-link {
+  position: absolute !important;
+  width: 100%;
+
+  padding-inline: 0.5rem;
+
+  @include state.link($visited: null, $internal-outline: true);
+  background: rgba(white, 0.5);
+
+  text-align: center;
+  z-index: 2;
+
+  &:not(:focus) {
+    @include state.hidden;
+  }
+}
+
+header,
+footer {
+  padding-inline: layout.$section-padding;
+
+  @include layout.mobile {
+    padding-inline: 0;
+  }
+}
+
+main {
+  flex: auto;
+  isolation: isolate;
+
+  padding-block: 1rem;
+
+  > :not(.fullbleed) {
+    margin-inline: layout.$section-padding;
+  }
+  > :not(.no-padding) {
+    padding-inline: 1rem;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul {
+  margin-inline: 0;
+  margin-block: 0 1rem;
+}
+
+h1 {
+  @include typography.title;
+}
+
+h2 {
+  @include typography.heading;
+}
+
+h3 {
+  @include typography.subheading;
+}
+
+ul {
+  padding-inline-start: 2rem;
+}
+
+:where(:focus-visible) {
+  @include state.focus($internal-outline: true);
+}
+
+a {
+  @include state.link;
+}
+
+.visually-hidden {
+  @include state.hidden;
+}
+
+.svg-inline--fa {
+  &.svg-inline--fa {
+    width: 1em;
+  }
+
+  color: color.$icon;
+
+  vertical-align: text-bottom;
+
+  a:hover & {
+    @include state.hover(color.$icon);
+  }
+}
