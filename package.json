@@ -1,19 +1,22 @@
 {
-  "name": "@har79/theme",
+  "name": "har79-theme",
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
     "har79-config": "github:har79/config",
     "license-checker": "^25.0.1",
+    "normalize.css": "^8.0.1",
     "npm-check-updates": "^16.14.20",
+    "npm-watch": "^0.13.0",
     "oss-attribution-generator": "^1.7.1",
     "prettier": "^3.2.5",
     "prettier-plugin-jsdoc": "^1.3.0",
     "prettier-plugin-sh": "^0.14.0",
+    "sass": "^1.77.4",
     "stylelint": "^16.5.0",
     "stylelint-config-standard-scss": "^13.1.0"
   },
   "files": [
-    "**/*.scss"
+    "build"
   ],
   "main": "_index.scss",
   "style": "_index.scss",
@@ -25,13 +28,20 @@
     "license:check": "license-checker --production --onlyAllow 'MIT;ISC;Apache-2.0'",
     "license:attribution": "generate-attribution",
     "license": "npm run license:check && npm run license:attribution",
+    "build": "mkdir -p build && cp src/_*.scss build && sass --load-path=node_modules src/main.scss build/main.css",
     "update": "npm-check-updates --peer -u && npm update",
     "preversion": "npm run license:check && npm run fix",
     "postversion": "git push && git push --tags",
-    "prepare": "npm run clean && npm run license:check"
+    "prepare": "npm run clean && npm run license:check && npm run build",
+    "start": "npm-watch build"
   },
-  "version": "0.1.2",
-  "dependencies": {
-    "normalize.css": "^8.0.1"
-  }
+  "watch": {
+    "build": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "scss"
+    }
+  },
+  "version": "0.1.2"
 }
