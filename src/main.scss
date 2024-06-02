@@ -1,9 +1,6 @@
-@charset "utf-8";
-
+@charset 'utf-8';
 @forward 'normalize';
-
 @forward 'header';
-
 @use 'animation';
 @use 'color';
 @use 'layout';
@@ -18,8 +15,8 @@ html {
 // https://www.paulirish.com/2012/box-sizing-border-box-ftw/
 // Apply a natural box layout model to all elements, but allowing components to change.
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -44,6 +41,7 @@ body {
   padding-inline: 0.5rem;
 
   @include state.link($visited: null, $internal-outline: true);
+  /* stylelint-disable-next-line color-function-notation */
   background: rgba(white, 0.5);
 
   text-align: center;
@@ -72,6 +70,7 @@ main {
   > :not(.fullbleed) {
     margin-inline: layout.$section-padding;
   }
+
   > :not(.no-padding) {
     padding-inline: 1rem;
   }
@@ -117,7 +116,9 @@ a {
   @include state.hidden;
 }
 
+/* stylelint-disable-next-line selector-class-pattern */
 .svg-inline--fa {
+  /* stylelint-disable-next-line selector-class-pattern */
   &.svg-inline--fa {
     width: 1em;
   }
