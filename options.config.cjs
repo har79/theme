@@ -1,1 +1,1 @@
-node_modules/har79-config/options.config.cjs
+node_modules/@har79/config/options.config.cjs

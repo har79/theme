@@ -1,1 +1,1 @@
-node_modules/har79-config/.prettierrc.cjs
+node_modules/@har79/config/.prettierrc.cjs
