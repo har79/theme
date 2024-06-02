@@ -62,3 +62,11 @@
   overflow: hidden;
   clip: rect(0 0 0 0);
 }
+
+@mixin visible {
+  position: initial;
+  height: initial;
+  width: initial;
+  overflow: initial;
+  clip: inherit;
+}

@@ -34,3 +34,8 @@ $section-border: linear-gradient(
     @content;
   }
 }
+
+@function border-gradient($direction: top, $width: 0 0 0 1px) {
+  @return linear-gradient(to $direction, transparent 15%, color.$border 40% 60%, transparent 85%) 1 /
+    $width;
+}

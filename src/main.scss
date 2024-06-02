@@ -105,7 +105,7 @@ ul {
   padding-inline-start: 2rem;
 }
 
-:where(:focus-visible) {
+:where(:focus) {
   @include state.focus($internal-outline: true);
 }
 

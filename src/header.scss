@@ -116,23 +116,14 @@ header {
     }
   }
 
-  li {
+  > li {
     border-left: layout.$border;
-    @function border($direction: top, $width: 0 0 0 1px) {
-      @return linear-gradient(
-          to $direction,
-          transparent 15%,
-          color.$border 40% 60%,
-          transparent 85%
-        )
-        1 / $width;
-    }
-    border-image: border();
+    border-image: layout.border-gradient();
 
     @include layout.mobile {
       border-left: none;
       border-top: layout.$border;
-      border-image: border(right, 1px 0 0 0);
+      border-image: layout.border-gradient(right, 1px 0 0 0);
     }
 
     &:last-of-type {
@@ -146,26 +137,59 @@ header {
       }
     }
   }
+}
 
-  .nav-link {
-    display: block;
-    min-width: 6rem;
+.nav-link {
+  display: block;
+  min-width: 6rem;
 
-    border-radius: 2px;
-    padding-block: 0.5rem;
-    padding-inline: 1rem;
+  border-radius: 2px;
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
 
-    @include state.link($visited: null, $internal-outline: true);
+  @include state.link($visited: null, $internal-outline: true);
 
-    text-align: center;
-    text-decoration: none;
+  background: none;
+  border: none;
+  text-align: center;
+  text-decoration: none;
 
-    &.current {
-      @include typography.subheading;
+  @include typography.body;
+
+  &.current {
+    @include typography.subheading;
+  }
+
+  &:link:hover {
+    text-decoration: underline;
+  }
+}
+
+// TODO: mobile layout
+.nav-submenu {
+  ul {
+    @include state.hidden;
+
+    padding: 0;
+
+    background: color.$background;
+    border: layout.$border {
+      top: 1px solid white;
     }
+    border-radius: 0 0 4px 4px;
+    list-style: none;
+  }
 
-    &:link:hover {
-      text-decoration: underline;
+  li {
+    border-top: layout.$border;
+    border-image: layout.border-gradient(right, 1px 0 0 0);
+  }
+
+  &:hover,
+  &:focus-within {
+    ul {
+      @include state.visible;
+      position: absolute;
     }
   }
 }
