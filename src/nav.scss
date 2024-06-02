@@ -46,11 +46,12 @@
     inset: 0;
     transform: translateX(100%);
 
-    padding-block: 7rem 1rem;
+    margin-block-start: calc(4rem + 1px);
+    padding-block: 2rem 1rem;
     padding-inline: 0;
     flex-flow: column;
 
-    background: linear-gradient(to bottom, transparent 5rem, white 5rem);
+    background: white;
     transition: animation.transition(transform);
 
     .nav:focus-within & {
@@ -61,14 +62,14 @@
   > li {
     @include layout.border-inline(1, 0);
 
-    @include layout.mobile {
-      @include layout.border-block(1, 0);
-    }
-
     &:last-of-type {
       @include layout.border-inline(1, 1);
+    }
 
-      @include layout.mobile {
+    @include layout.mobile {
+      @include layout.border-block(1, 0);
+
+      &:last-of-type {
         @include layout.border-block(1, 1);
       }
     }
@@ -97,19 +98,20 @@
   &:link:hover {
     text-decoration: underline;
   }
+
+  @include layout.mobile {
+    padding-inline: 2rem;
+
+    text-align: left;
+  }
 }
 
 // TODO: mobile layout
 .nav-submenu {
   ul {
-    @include state.hidden;
-
-    border: layout.border();
-    border-top: layout.border($color: white);
-    border-radius: 0 0 4px 4px;
+    margin: 0;
     padding: 0;
 
-    background: color.$background;
     list-style: none;
   }
 
@@ -117,11 +119,33 @@
     @include layout.border-block(1, 0);
   }
 
-  &:hover,
-  &:focus-within {
+  @include layout.desktop {
     ul {
-      @include state.visible;
-      position: absolute;
+      @include state.hidden;
+
+      border: layout.border();
+      border-top: layout.border($color: white);
+      border-radius: 0 0 4px 4px;
+
+      background: color.$background;
+    }
+
+    &:hover,
+    &:focus-within {
+      ul {
+        @include state.visible;
+        position: absolute;
+      }
+    }
+  }
+
+  @include layout.mobile {
+    .nav-link {
+      width: 100%;
+    }
+
+    ul .nav-link {
+      padding-inline-start: 4rem;
     }
   }
 }

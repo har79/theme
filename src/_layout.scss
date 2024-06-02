@@ -6,6 +6,12 @@
   inset: $spacing;
 }
 
+@mixin desktop {
+  @media (width > 40rem) {
+    @content;
+  }
+}
+
 @mixin mobile {
   @media (width <= 40rem) {
     @content;
@@ -54,7 +60,8 @@
     border-bottom: border();
   }
 
-  border-image: -border-gradient(right, ($top * 1px) 0 ($bottom * 1px) 0);
+  $width: ($top * 1px) 0 ($bottom * 1px) 0;
+  border-image: linear-gradient(to right, color.$border 60%, transparent 85%) 1 / $width;
 }
 
 /* Section styling */
