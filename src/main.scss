@@ -1,6 +1,7 @@
 @charset 'utf-8';
-@forward 'normalize';
+@forward 'normalize.css/normalize.css';
 @forward 'header';
+@forward 'nav';
 @use 'animation';
 @use 'color';
 @use 'layout';
@@ -9,6 +10,7 @@
 
 html {
   box-sizing: border-box;
+
   font-size: 16px;
 }
 
@@ -22,48 +24,37 @@ html {
 
 body {
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-
   // Always show scrollbar to prevent layout jumping.
   overflow-y: scroll;
-
-  @include typography.body;
-
   // TODO fade out on navigate?
   // @include animation.fade-in;
+
+  min-height: 100vh;
+  flex-flow: column;
+
+  @include typography.body;
 }
 
 .skip-link {
   position: absolute !important;
-  width: 100%;
+  z-index: 2;
+  inset-inline: 0;
 
   padding-inline: 0.5rem;
 
   @include state.link($visited: null, $internal-outline: true);
   /* stylelint-disable-next-line color-function-notation */
   background: rgba(white, 0.5);
-
   text-align: center;
-  z-index: 2;
 
   &:not(:focus) {
     @include state.hidden;
   }
 }
 
-header,
-footer {
-  padding-inline: layout.$section-padding;
-
-  @include layout.mobile {
-    padding-inline: 0;
-  }
-}
-
 main {
-  flex: auto;
   isolation: isolate;
+  flex: auto;
 
   padding-block: 1rem;
 
@@ -123,9 +114,9 @@ a {
     width: 1em;
   }
 
-  color: color.$icon;
-
   vertical-align: text-bottom;
+
+  color: color.$icon;
 
   a:hover & {
     @include state.hover(color.$icon);

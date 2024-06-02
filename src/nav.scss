@@ -1,0 +1,127 @@
+@use 'animation';
+@use 'color';
+@use 'layout';
+@use 'state';
+@use 'typography';
+
+.nav {
+  display: flex;
+
+  align-items: flex-end;
+
+  @include layout.mobile {
+    min-width: 4rem;
+  }
+}
+
+.nav-button {
+  align-self: center;
+
+  display: none;
+  height: 4rem;
+  width: 4rem;
+
+  margin-inline-end: 0.5rem;
+  border: none;
+  padding: 0;
+
+  @include state.color-with-hover(color.$icon, $internal-outline: true);
+  background: none;
+
+  @include layout.mobile {
+    display: block;
+  }
+}
+
+.nav-links {
+  display: flex;
+
+  margin-block: 0;
+  padding-inline: 0.5rem 1rem;
+
+  list-style: none;
+
+  @include layout.mobile {
+    position: fixed;
+    inset: 0;
+    transform: translateX(100%);
+
+    padding-block: 7rem 1rem;
+    padding-inline: 0;
+    flex-flow: column;
+
+    background: linear-gradient(to bottom, transparent 5rem, white 5rem);
+    transition: animation.transition(transform);
+
+    .nav:focus-within & {
+      transform: none;
+    }
+  }
+
+  > li {
+    @include layout.border-inline(1, 0);
+
+    @include layout.mobile {
+      @include layout.border-block(1, 0);
+    }
+
+    &:last-of-type {
+      @include layout.border-inline(1, 1);
+
+      @include layout.mobile {
+        @include layout.border-block(1, 1);
+      }
+    }
+  }
+}
+
+.nav-link {
+  display: block;
+  min-width: 6rem;
+
+  border: none;
+  border-radius: 2px;
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+
+  @include state.link($visited: null, $internal-outline: true);
+  @include typography.body;
+  background: none;
+  text-align: center;
+  text-decoration: none;
+
+  &.current {
+    @include typography.subheading;
+  }
+
+  &:link:hover {
+    text-decoration: underline;
+  }
+}
+
+// TODO: mobile layout
+.nav-submenu {
+  ul {
+    @include state.hidden;
+
+    border: layout.border();
+    border-top: layout.border($color: white);
+    border-radius: 0 0 4px 4px;
+    padding: 0;
+
+    background: color.$background;
+    list-style: none;
+  }
+
+  li {
+    @include layout.border-block(1, 0);
+  }
+
+  &:hover,
+  &:focus-within {
+    ul {
+      @include state.visible;
+      position: absolute;
+    }
+  }
+}
