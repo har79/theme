@@ -22,8 +22,8 @@
   "style": "_index.scss",
   "scripts": {
     "clean": "rm -r coverage build oss-attribution *.tsbuildinfo ||:",
-    "fix:format": "prettier --write .",
-    "fix:lint": "stylelint '**/*.scss'",
+    "fix:format": "prettier --write src",
+    "fix:lint": "stylelint 'src/**/*.scss'",
     "fix": "npm run fix:format && npm run fix:lint",
     "license:check": "license-checker --production --onlyAllow 'MIT;ISC;Apache-2.0'",
     "license:attribution": "generate-attribution",
