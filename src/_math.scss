@@ -1,6 +1,8 @@
 @forward 'sass:math' hide ceil, round;
 @use 'sass:math';
 
+/* stylelint-disable scss/no-global-function-names */
+
 $phi: math.div(1 + math.sqrt(5), 2);
 
 @function ceil($n, $m: 1) {
