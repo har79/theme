@@ -1,5 +1,5 @@
 {
-  "name": "har79-theme",
+  "name": "@har79/theme",
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
     "har79-config": "github:har79/config",
