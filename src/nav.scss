@@ -67,10 +67,10 @@
     }
 
     @include layout.mobile {
-      @include layout.border-block(1, 0);
+      @include layout.border-block(1, 0, $gradient: layout.$border-mobile-gradient);
 
       &:last-of-type {
-        @include layout.border-block(1, 1);
+        @include layout.border-block(1, 1, $gradient: layout.$border-mobile-gradient);
       }
     }
   }
@@ -146,6 +146,10 @@
 
     ul .nav-link {
       padding-inline-start: 4rem;
+    }
+
+    li {
+      @include layout.border-block(1, 0, $gradient: layout.$border-mobile-gradient);
     }
   }
 }

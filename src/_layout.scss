@@ -24,16 +24,11 @@
   @return ($width * 1px) solid $color;
 }
 
-@function -border-gradient($direction, $width) {
-  /* prettier-ignore */
-  @return linear-gradient(
-      to $direction,
-      transparent 15%,
-      color.$border 40% 60%,
-      transparent 85%
-    )
-    1 / $width;
+@function border-gradient($direction) {
+  @return linear-gradient(to $direction, transparent 15%, color.$border 40% 60%, transparent 85%);
 }
+
+$border-mobile-gradient: linear-gradient(to right, color.$border 60%, transparent 85%);
 
 @mixin border-inline($left: 0, $right: 0) {
   border: none;
@@ -46,10 +41,11 @@
     border-right: border();
   }
 
-  border-image: -border-gradient(top, 0 ($right * 1px) 0 ($left * 1px));
+  $width: 0 ($right * 1px) 0 ($left * 1px);
+  border-image: border-gradient(top) 1 / $width;
 }
 
-@mixin border-block($top: 0, $bottom: 0) {
+@mixin border-block($top: 0, $bottom: 0, $gradient: border-gradient(right)) {
   border: none;
 
   @if $top > 0 {
@@ -61,7 +57,7 @@
   }
 
   $width: ($top * 1px) 0 ($bottom * 1px) 0;
-  border-image: linear-gradient(to right, color.$border 60%, transparent 85%) 1 / $width;
+  border-image: $gradient 1 / $width;
 }
 
 /* Section styling */
