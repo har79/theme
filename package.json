@@ -1,8 +1,8 @@
 {
-  "name": "har79-theme",
+  "name": "@har79/theme",
   "devDependencies": {
+    "@har79/config": "github:har79/config",
     "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
-    "har79-config": "github:har79/config",
     "license-checker": "^25.0.1",
     "normalize.css": "^8.0.1",
     "npm-check-updates": "^16.14.20",
