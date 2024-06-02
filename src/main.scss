@@ -80,15 +80,15 @@ ul {
 }
 
 h1 {
-  @include typography.title;
-}
-
-h2 {
   @include typography.heading;
 }
 
-h3 {
+h2 {
   @include typography.subheading;
+}
+
+h3 {
+  @include typography.section-heading;
 }
 
 ul {

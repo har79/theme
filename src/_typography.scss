@@ -13,14 +13,18 @@ $font-family: futura, sans-serif;
 }
 
 @mixin title {
-  @include font(3);
+  @include font(4);
 }
 
 @mixin heading {
-  @include font(2);
+  @include font(3);
 }
 
 @mixin subheading {
+  @include font(2);
+}
+
+@mixin section-heading {
   @include font(1, $weight: 600);
 }
 

@@ -40,7 +40,7 @@
   $internal-outline: false,
   $radius: 2px
 ) {
-  &:where(:focus-visible) {
+  &:where(:focus) {
     @include focus($internal-outline: $internal-outline, $radius: $radius);
   }
 

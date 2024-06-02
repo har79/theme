@@ -30,6 +30,23 @@ header {
   }
 }
 
+.header-title {
+  margin: 0;
+
+  @include typography.title;
+
+  a {
+    display: flex;
+
+    height: 4rem;
+    padding-inline: 1rem;
+    align-items: center;
+
+    @include state.link($color: color.$primary, $visited: null, $internal-outline: true);
+    text-decoration: none;
+  }
+}
+
 footer {
   @include layout.section-border-top;
   padding-block: 0.5rem;
