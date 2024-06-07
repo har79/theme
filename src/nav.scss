@@ -95,10 +95,6 @@
   text-align: center;
   text-decoration: none;
 
-  &.current {
-    @include typography.section-heading;
-  }
-
   &:link:hover {
     text-decoration: underline;
   }
@@ -110,8 +106,11 @@
   }
 }
 
-// TODO: mobile layout
-.nav-submenu {
+span.current {
+  @include typography.section-heading;
+}
+
+.nav-group {
   ul {
     margin: 0;
     padding: 0;
@@ -125,7 +124,12 @@
 
   @include layout.desktop {
     button {
-      @include state.color-with-hover(color.$action, $internal-outline: true);
+      &.current {
+        @include typography.section-heading;
+      }
+      &:not(.\9) {
+        @include state.color-with-hover(color.$action, $internal-outline: true);
+      }
     }
 
     ul {
