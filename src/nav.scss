@@ -96,7 +96,7 @@
   text-decoration: none;
 
   &.current {
-    @include typography.subheading;
+    @include typography.section-heading;
   }
 
   &:link:hover {
