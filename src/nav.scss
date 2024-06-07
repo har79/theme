@@ -31,6 +31,10 @@
   @include layout.mobile {
     display: block;
   }
+
+  &:focus {
+    pointer-events: none;
+  }
 }
 
 .nav-links {
