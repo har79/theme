@@ -135,20 +135,21 @@ span.current {
     }
 
     ul {
-      @include state.hidden;
+      position: absolute;
+      opacity: 1;
 
       border: layout.border();
       border-top: layout.border($color: white);
       border-radius: 0 0 4px 4px;
 
       background: color.$background;
+      transition: animation.transition(opacity);
     }
 
-    &:hover,
-    &:focus-within {
+    &:not(:hover):not(:focus-within) {
       ul {
-        @include state.visible;
-        position: absolute;
+        @include state.hidden;
+        opacity: 0;
       }
     }
   }

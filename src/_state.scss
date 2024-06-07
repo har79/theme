@@ -57,6 +57,7 @@
   }
 }
 
+// https://www.a11yproject.com/posts/how-to-hide-content/
 @mixin hidden {
   position: absolute;
 
@@ -64,13 +65,7 @@
   width: 1px;
   overflow: hidden;
   clip: rect(0 0 0 0);
-}
+  clip-path: inset(50%);
 
-@mixin visible {
-  position: initial;
-
-  height: initial;
-  width: initial;
-  overflow: initial;
-  clip: inherit;
+  white-space: nowrap;
 }
