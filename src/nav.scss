@@ -85,7 +85,7 @@
   padding-block: 0.5rem;
   padding-inline: 1rem;
 
-  @include state.link($visited: null, $internal-outline: true);
+  @include state.link($internal-outline: true);
   @include typography.body;
   background: none;
   text-align: center;
@@ -120,6 +120,10 @@
   }
 
   @include layout.desktop {
+    button {
+      @include state.color-with-hover(color.$action, $internal-outline: true);
+    }
+
     ul {
       @include state.hidden;
 
