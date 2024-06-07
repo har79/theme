@@ -107,7 +107,7 @@ a {
   @include state.link;
 }
 
-.visually-hidden:not(:focus):not(:active) {
+.visually-hidden:not(:focus, :active) {
   @include state.hidden;
 }
 

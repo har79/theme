@@ -136,6 +136,7 @@ span.current {
 
     ul {
       position: absolute;
+
       opacity: 1;
 
       border: layout.border();
@@ -146,7 +147,7 @@ span.current {
       transition: animation.transition(opacity);
     }
 
-    &:not(:hover):not(:focus-within) {
+    &:not(:hover, :focus-within) {
       ul {
         @include state.hidden;
         opacity: 0;
