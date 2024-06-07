@@ -127,6 +127,8 @@ span.current {
       &.current {
         @include typography.section-heading;
       }
+
+      // stylelint-disable-next-line selector-class-pattern
       &:not(.\9) {
         @include state.color-with-hover(color.$action, $internal-outline: true);
       }
