@@ -144,6 +144,10 @@
   }
 
   @include layout.mobile {
+    button {
+      pointer-events: none;
+    }
+
     .nav-link {
       width: 100%;
     }
