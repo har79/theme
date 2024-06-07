@@ -23,16 +23,20 @@ html {
 }
 
 body {
-  display: flex;
   overflow-y: scroll; // Always show scrollbar to prevent layout jumping.
 
   // TODO fade out on navigate?
   // @include animation.fade-in;
 
+  @include typography.body;
+}
+
+body,
+#app {
+  display: flex;
+
   min-height: 100vh;
   flex-flow: column;
-
-  @include typography.body;
 }
 
 .skip-link {
