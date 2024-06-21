@@ -1,0 +1,83 @@
+<!doctype html>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="..." />
+<title>@har79/theme</title>
+<style>
+  .fa-icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
+  }
+</style>
+
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header>
+  <p class="header-title">
+    <a class="logo-link" href="/">@har79/theme</a>
+  </p>
+
+  <nav aria-label="Main menu" class="nav">
+    <button class="nav-button" tabindex="-1" onclick="this.focus()">
+      <svg class="fa-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+        <path
+          d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"
+        />
+      </svg>
+    </button>
+    <ul class="nav-links">
+      <li>
+        <span class="visually-hidden">Current page:</span>
+        <span class="nav-link current">Home</span>
+      </li>
+      <li>
+        <a href="#" class="nav-link">Item</a>
+      </li>
+      <li class="nav-group">
+        <button class="nav-link" tabindex="-1">Group</button>
+        <ul>
+          <li>
+            <a href="#" class="nav-link">Item 1</a>
+          </li>
+          <li>
+            <a href="#" class="nav-link">Item 2</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+  <h1>Page title</h1>
+  <p>Some text</p>
+  <h2>Section title</h2>
+  <p>More text</p>
+</main>
+
+<footer>
+  <ul class="footer-links">
+    <li>
+      <a id="bug-link" href="https://github.com/har79/theme/issues/new" target="_blank"
+        >Report bug</a
+      >
+    </li>
+  </ul>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var e = document.getElementById('bug-link')
+    null !== e &&
+      e.setAttribute(
+        'href',
+        e.getAttribute('href') +
+          '&body=User+agent%3A+' +
+          encodeURIComponent(navigator.userAgent) +
+          '%0A%0ADescribe+the+bug+here%3A%0A%0A'
+      )
+  })
+</script>
