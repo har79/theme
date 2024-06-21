@@ -10,7 +10,7 @@ footer {
   padding-inline: layout.$section-padding;
   justify-content: space-between;
 
-  background: color.$background;
+  @include color.background;
 
   @include layout.mobile {
     padding-inline: 0;

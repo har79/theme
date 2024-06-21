@@ -29,6 +29,7 @@ body {
   // @include animation.fade-in;
 
   @include typography.body;
+  @include color.background;
 }
 
 body,
@@ -48,7 +49,7 @@ body,
 
   @include state.link($visited: null, $internal-outline: true);
   /* stylelint-disable-next-line color-function-notation */
-  background: rgba(white, 0.5);
+  @include color.background($alpha: 0.5);
   text-align: center;
 
   &:not(:focus) {

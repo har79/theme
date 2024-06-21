@@ -1,8 +1,6 @@
 @use 'sass:color';
 @use 'sass:math';
 
-/* stylelint-disable scss/no-global-function-names */
-
 @function channel-luminance($channel) {
   $srgb: math.div($channel, 255);
 
@@ -32,7 +30,8 @@
   @return if($r1 > $r2, math.div($r1, $r2), math.div($r2, $r1));
 }
 
-@function check-contrast($color, $background: $background, $contrast: 4.5) {
+// TODO: update to work with themes
+@function check-contrast($color, $background: white, $contrast: 4.5) {
   $c: contrast-ratio($color, $background);
 
   @if $c < $contrast {
@@ -74,16 +73,3 @@
     }
   }
 }
-
-@function hue($hue, $saturation: 67%, $contrast: 4.5) {
-  @return darken(hsl($hue, $saturation, 100%), $contrast);
-}
-
-$background: white;
-$body: hue(0, 0%, 7);
-$icon: hue(0, 0%);
-$border: hue(0, 0%, 3);
-$action: hue(210);
-$visited: hue(255);
-$primary: hue(120);
-$secondary: hue(300);
