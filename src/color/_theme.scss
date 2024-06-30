@@ -1,0 +1,92 @@
+@use 'contrast';
+@use 'sass:map';
+@use '../check';
+
+@function hue($hue, $saturation: 67%, $contrast: 4.5, $background: null) {
+  @return contrast.darken(
+    hsl($hue, $saturation, if($contrast > 0, 100%, 0%)),
+    $contrast: $contrast,
+    $background: $background
+  );
+}
+
+$name-key: 'name';
+$is-dark-key: 'is-dark';
+$background-key: 'background';
+$body-key: 'body';
+$icon-key: 'icon';
+$border-key: 'border';
+$action-key: 'action';
+$visited-key: 'visited';
+$primary-key: 'primary';
+$secondary-key: 'secondary';
+
+@function build-theme($name, $background, $is-dark: false) {
+  $m: if($is-dark, -1, 1);
+  @return (
+    $name-key: $name,
+    $is-dark-key: $is-dark,
+    $background-key: $background,
+    'body': hue(0, 0%, $contrast: 7 * $m, $background: $background),
+    'icon': hue(0, 0%, $contrast: 4.5 * $m, $background: $background),
+    'border': hue(0, 0%, $contrast: 3 * $m, $background: $background),
+    // TODO: check contrast with body text?
+    'action': hue(210, $contrast: 4.5 * $m, $background: $background),
+    'visited': hue(255, $contrast: 4.5 * $m, $background: $background),
+    'primary': hue(120, $contrast: 4.5 * $m, $background: $background),
+    'secondary': hue(300, $contrast: 4.5 * $m, $background: $background)
+  );
+}
+
+/// Light theme
+$light-theme: build-theme('light', white);
+
+/// Dark theme
+// TODO: changing to calculated grey causes infinite loop?
+$dark-theme: build-theme('dark', black /*hue(0, 0%, $contrast: 9)*/, $is-dark: true);
+
+@function get($theme, $color) {
+  @return check.not-null(
+    map.get($theme, $color),
+    "Couldn't find color `#{$color}` in theme `#{map.get($theme, $name-key)}`."
+  );
+}
+
+@mixin -theme($name, $theme) {
+  @media (prefers-color-scheme: $name) {
+    @content ($theme);
+  }
+
+  .#{$name}-theme &,
+  &.#{$name}-theme {
+    @content ($theme);
+  }
+}
+
+@mixin theme {
+  @include -theme('light', $light-theme) using ($theme) {
+    @content ($theme);
+  }
+
+  @include -theme('dark', $dark-theme) using ($theme) {
+    @content ($theme);
+  }
+}
+
+@mixin theme-color($key) {
+  @include theme using ($theme) {
+    $color: map.get($theme, $key);
+
+    @content ($color);
+  }
+}
+
+@mixin theme-property($property, $key) {
+  @include theme-color($key) using ($color) {
+    #{$property}: $color;
+  }
+}
+
+@mixin theme-background {
+  @include theme-property('background', $background-key);
+}

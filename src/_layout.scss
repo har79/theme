@@ -20,44 +20,50 @@
 
 /* Border styling */
 
-@function border($width: 1, $color: color.$border) {
+@function border($color, $width: 1) {
   @return ($width * 1px) solid $color;
 }
 
-@function border-gradient($direction) {
-  @return linear-gradient(to $direction, transparent 15%, color.$border 40% 60%, transparent 85%);
+@function border-gradient($color, $direction) {
+  @return linear-gradient(to $direction, transparent 15%, $color 40% 60%, transparent 85%);
 }
 
-$border-mobile-gradient: linear-gradient(to right, color.$border 60%, transparent 85%);
+@function border-mobile-gradient($color) {
+  @return linear-gradient(to right, $color 60%, transparent 85%);
+}
 
 @mixin border-inline($left: 0, $right: 0) {
   border: none;
 
-  @if $left > 0 {
-    border-left: border();
-  }
+  @include color.theme-color(color.$border-key) using ($color) {
+    @if $left > 0 {
+      border-left: border($color);
+    }
 
-  @if $right > 0 {
-    border-right: border();
-  }
+    @if $right > 0 {
+      border-right: border($color);
+    }
 
-  $width: 0 ($right * 1px) 0 ($left * 1px);
-  border-image: border-gradient(top) 1 / $width;
+    $width: 0 ($right * 1px) 0 ($left * 1px);
+    border-image: border-gradient($color, top) 1 / $width;
+  }
 }
 
-@mixin border-block($top: 0, $bottom: 0, $gradient: border-gradient(right)) {
+@mixin border-block($top: 0, $bottom: 0, $gradient: null) {
   border: none;
+  @include color.theme-color(color.$border-key) using ($color) {
+    @if $top > 0 {
+      border-top: border($color);
+    }
 
-  @if $top > 0 {
-    border-top: border();
+    @if $bottom > 0 {
+      border-bottom: border($color);
+    }
+
+    $gradient: if($gradient, $gradient, border-gradient($color, right));
+    $width: ($top * 1px) 0 ($bottom * 1px) 0;
+    border-image: $gradient 1 / $width;
   }
-
-  @if $bottom > 0 {
-    border-bottom: border();
-  }
-
-  $width: ($top * 1px) 0 ($bottom * 1px) 0;
-  border-image: $gradient 1 / $width;
 }
 
 /* Section styling */
@@ -71,7 +77,7 @@ $section-padding: calc(1rem + max(0px, (100% - $-section-width) / 2));
   @return linear-gradient(
       to right,
       transparent $-border-overflow,
-      color.$border calc(5% + $-border-overflow) calc(95% - $-border-overflow),
+      color.$border-key calc(5% + $-border-overflow) calc(95% - $-border-overflow),
       transparent calc(100% - $-border-overflow)
     )
     1 / $width;
@@ -79,12 +85,16 @@ $section-padding: calc(1rem + max(0px, (100% - $-section-width) / 2));
 
 @mixin section-border-top {
   margin-block-start: 1rem;
-  border-top: border();
+  @include color.theme-color(color.$border-key) using ($color) {
+    border-top: border($color);
+  }
   border-image: -section-border(1px 0 0 0);
 }
 
 @mixin section-border-bottom {
   margin-block-end: 1rem;
-  border-bottom: border();
+  @include color.theme-color(color.$border-key) using ($color) {
+    border-bottom: border($color);
+  }
   border-image: -section-border(0 0 1px 0);
 }

@@ -1,0 +1,6 @@
+@function not-null($value, $message) {
+  @if $value == null {
+    @error $message;
+  }
+  @return $value;
+}

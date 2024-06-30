@@ -7,7 +7,7 @@ $font-family: futura, sans-serif;
   $size: math.pow(math.$phi, $scale * 0.5) * 1rem;
   $height: math.ceil($size + 0.5rem, 0.5);
 
-  @include color.color('body');
+  @include color.theme-property('color', color.$body-key);
   font: $weight #{math.round($size, 0.1)} / #{$height} $font-family;
   text-indent: calc(0.8px - 0.1em);
 }

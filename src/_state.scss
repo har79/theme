@@ -1,5 +1,6 @@
 @use 'color';
 @use 'layout';
+@use 'sass:map';
 
 @mixin focus($internal-outline: false, $radius: 2px) {
   position: relative;
@@ -18,15 +19,26 @@
   }
 }
 
-@mixin hover($color) {
-  color: color.check-contrast(color.darken($color, $contrast: 3));
+@mixin -hover($color, $background, $is-dark) {
+  $contrast: if($is-dark, -3, 3);
+  color: color.check-contrast(color.darken($color, $contrast: $contrast), $background);
 }
 
-@mixin color-with-hover($color, $internal-outline: false, $radius: 2px) {
-  color: color.check-contrast($color);
+@mixin hover($color, $background: null) {
+  @include color.theme using ($theme) {
+    @include -hover(
+      $color,
+      if($background, $background, color.get($theme, color.$background-key)),
+      color.get($theme, color.$is-dark-key)
+    );
+  }
+}
+
+@mixin -color-with-hover($color, $background, $is-dark, $internal-outline: false, $radius: 2px) {
+  color: color.check-contrast($color, $background);
 
   &:hover {
-    @include hover($color);
+    @include -hover($color, $background, $is-dark);
   }
 
   &:active {
@@ -34,9 +46,22 @@
   }
 }
 
+@mixin color-with-hover($color, $background: null, $args...) {
+  @include color.theme using ($theme) {
+    @include -color-with-hover(
+      $color,
+      if($background, $background, color.get($theme, color.$background-key)),
+      color.get($theme, color.$is-dark-key),
+      $args...
+    );
+  }
+}
+
+// TODO: check contrast with body text as well.
 @mixin link(
-  $color: color.$action,
-  $visited: color.$visited,
+  $color-key: color.$action-key,
+  $visited-key: color.$visited-key,
+  $background-key: color.$background-key,
   $internal-outline: false,
   $radius: 2px
 ) {
@@ -44,16 +69,28 @@
     @include focus($internal-outline: $internal-outline, $radius: $radius);
   }
 
-  &:link {
-    @include color-with-hover($color, $internal-outline: $internal-outline, $radius: $radius);
-  }
+  @include color.theme using ($theme) {
+    $background: color.get($theme, $background-key);
+    $is-dark: color.get($theme, color.$is-dark-key);
+    &:link {
+      @include -color-with-hover(
+        color.get($theme, $color-key),
+        $background,
+        $is-dark,
+        $internal-outline: $internal-outline,
+        $radius: $radius
+      );
+    }
 
-  &:visited {
-    @include color-with-hover(
-      if($visited, $visited, $color),
-      $internal-outline: $internal-outline,
-      $radius: $radius
-    );
+    &:visited {
+      @include -color-with-hover(
+        color.get($theme, if($visited-key, $visited-key, $color-key)),
+        $background,
+        $is-dark,
+        $internal-outline: $internal-outline,
+        $radius: $radius
+      );
+    }
   }
 }
 

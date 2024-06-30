@@ -29,7 +29,7 @@ body {
   // @include animation.fade-in;
 
   @include typography.body;
-  @include color.background;
+  @include color.theme-background;
 }
 
 body,
@@ -47,9 +47,11 @@ body,
 
   padding-inline: 0.5rem;
 
-  @include state.link($visited: null, $internal-outline: true);
+  @include state.link($visited-key: null, $internal-outline: true);
   /* stylelint-disable-next-line color-function-notation */
-  @include color.background($alpha: 0.5);
+  @include color.theme-color(color.$background-key) using ($color) {
+    background: rgba($color, 0.5);
+  }
   text-align: center;
 
   &:not(:focus) {
@@ -121,9 +123,11 @@ a {
 
   vertical-align: text-bottom;
 
-  color: color.$icon;
+  @include color.theme-color(color.$icon-key) using ($color) {
+    color: $color;
 
-  a:hover & {
-    @include state.hover(color.$icon);
+    a:hover & {
+      @include state.hover($color);
+    }
   }
 }

@@ -28,7 +28,7 @@
     "license:check": "license-checker --production --onlyAllow 'MIT;ISC;Apache-2.0'",
     "license:attribution": "generate-attribution",
     "license": "npm run license:check && npm run license:attribution",
-    "build": "mkdir -p build && cp src/_*.scss build && sass --load-path=node_modules src/main.scss build/main.css",
+    "build": "mkdir -p build && (cd src && cp --parents _*.scss **/_*.scss ../build) && sass --load-path=node_modules src/main.scss build/main.css",
     "update": "npm-check-updates --peer -u && npm update",
     "preversion": "npm run license:check && npm run fix",
     "postversion": "git push && git push --tags",

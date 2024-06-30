@@ -25,7 +25,9 @@
   border: none;
   padding: 0;
 
-  @include state.color-with-hover(color.$icon, $internal-outline: true);
+  @include color.theme-color(color.$icon-key) using ($color) {
+    @include state.color-with-hover($color, $internal-outline: true);
+  }
   background: none;
 
   @include layout.mobile {
@@ -55,7 +57,7 @@
     padding-inline: 0;
     flex-flow: column;
 
-    @include color.background;
+    @include color.theme-background;
     transition: animation.transition(transform);
 
     .nav:focus-within & {
@@ -71,10 +73,12 @@
     }
 
     @include layout.mobile {
-      @include layout.border-block(1, 0, $gradient: layout.$border-mobile-gradient);
+      @include color.theme-color(color.$border-key) using ($color) {
+        @include layout.border-block(1, 0, $gradient: layout.border-mobile-gradient($color));
 
-      &:last-of-type {
-        @include layout.border-block(1, 1, $gradient: layout.$border-mobile-gradient);
+        &:last-of-type {
+          @include layout.border-block(1, 1, $gradient: layout.border-mobile-gradient($color));
+        }
       }
     }
   }
@@ -130,7 +134,9 @@ span.current {
 
       // stylelint-disable-next-line selector-class-pattern
       &:not(.\9) {
-        @include state.color-with-hover(color.$action, $internal-outline: true);
+        @include color.theme-color(color.$action-key) using ($color) {
+          @include state.color-with-hover($color, $internal-outline: true);
+        }
       }
     }
 
@@ -139,11 +145,13 @@ span.current {
 
       opacity: 1;
 
-      border: layout.border();
-      border-top: layout.border($color: white);
+      @include color.theme using ($theme) {
+        border: layout.border(color.get($theme, color.$border-key));
+        border-top: layout.border(color.get($theme, color.$background-key));
+      }
       border-radius: 0 0 4px 4px;
 
-      @include color.background;
+      @include color.theme-background;
       transition: animation.transition(opacity);
     }
 
@@ -169,7 +177,9 @@ span.current {
     }
 
     li {
-      @include layout.border-block(1, 0, $gradient: layout.$border-mobile-gradient);
+      @include color.theme-color(color.$border-key) using ($color) {
+        @include layout.border-block(1, 0, $gradient: layout.border-mobile-gradient($color));
+      }
     }
   }
 }

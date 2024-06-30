@@ -1,5 +1,6 @@
 @use 'sass:color';
 @use 'sass:math';
+@use '../check';
 
 @function channel-luminance($channel) {
   $srgb: math.div($channel, 255);
@@ -31,7 +32,8 @@
 }
 
 // TODO: update to work with themes
-@function check-contrast($color, $background: white, $contrast: 4.5) {
+@function check-contrast($color, $background, $contrast: 4.5) {
+  $color: check.not-null($color, '$color must not be null');
   $c: contrast-ratio($color, $background);
 
   @if $c < $contrast {
@@ -41,7 +43,8 @@
   @return $color;
 }
 
-@function darken($color, $contrast) {
+@function darken($color, $contrast, $background: null) {
+  $background: if($background == null, $color, $background);
   $min: 0%;
   $max: if($contrast < 0, 100%, -100%);
   $contrast: math.abs($contrast);
@@ -54,10 +57,10 @@
     $next: color.scale($color, $lightness: $test);
 
     @if $next == $c or $next == $prev {
-      @return check-contrast($c, $background: $color, $contrast: $contrast);
+      @return check-contrast($c, $background: $background, $contrast: $contrast);
     }
 
-    $rn: contrast-ratio($color, $next);
+    $rn: contrast-ratio($next, $background);
 
     @if $rn >= $contrast and $rn < $r {
       $c: $next;

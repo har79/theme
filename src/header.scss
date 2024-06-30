@@ -10,7 +10,7 @@ footer {
   padding-inline: layout.$section-padding;
   justify-content: space-between;
 
-  @include color.background;
+  @include color.theme-background;
 
   @include layout.mobile {
     padding-inline: 0;
@@ -42,7 +42,11 @@ header {
     padding-inline: 1rem;
     align-items: center;
 
-    @include state.link($color: color.$primary, $visited: null, $internal-outline: true);
+    @include state.link(
+      $color-key: color.$primary-key,
+      $visited-key: null,
+      $internal-outline: true
+    );
     text-decoration: none;
   }
 }
