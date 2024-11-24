@@ -1,5 +1,23 @@
 {
   "name": "@har79/theme",
+  "version": "0.5.3",
+  "description": "TODO",
+  "license": "Apache-2.0",
+  "private": true,
+  "author": {
+    "name": "Harry Cameron",
+    "email": "github@harrycameron.com",
+    "url": "https://har79.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/har79/theme"
+  },
+  "files": [
+    "build"
+  ],
+  "main": "_index.scss",
+  "style": "_index.scss",
   "devDependencies": {
     "@har79/config": "github:har79/config",
     "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
@@ -15,11 +33,6 @@
     "stylelint": "^16.6.1",
     "stylelint-config-standard-scss": "^13.1.0"
   },
-  "files": [
-    "build"
-  ],
-  "main": "_index.scss",
-  "style": "_index.scss",
   "scripts": {
     "clean": "rm -r coverage build oss-attribution *.tsbuildinfo ||:",
     "fix:format": "prettier --write src",
@@ -30,6 +43,7 @@
     "license": "npm run license:check && npm run license:attribution",
     "build": "mkdir -p build && (cd src && cp --parents _*.scss **/_*.scss ../build) && sass --load-path=node_modules src/main.scss build/main.css",
     "update": "npm-check-updates --peer -u && npm update",
+    "update:check": "npm-check-updates",
     "preversion": "npm run license:check && npm run fix",
     "postversion": "git push && git push --tags",
     "prepare": "npm run clean && npm run license:check && npm run build",
@@ -42,6 +56,5 @@
       ],
       "extensions": "scss"
     }
-  },
-  "version": "0.5.3"
+  }
 }
