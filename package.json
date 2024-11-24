@@ -37,7 +37,7 @@
     "fix:format": "prettier --write src",
     "fix:lint": "stylelint 'src/**/*.scss'",
     "fix": "npm run fix:format && npm run fix:lint",
-    "license:check": "license-checker --production --onlyAllow 'MIT;ISC;Apache-2.0'",
+    "license:check": "license-checker --production --onlyAllow 'MIT;ISC;Apache-2.0' --excludePrivatePackages",
     "license:attribution": "generate-attribution",
     "license": "npm run license:check && npm run license:attribution",
     "build": "mkdir -p build && (cd src && cp --parents _*.scss **/_*.scss ../build) && sass --load-path=node_modules --silence-deprecation=mixed-decls src/main.scss build/main.css",
