@@ -44,6 +44,7 @@
 }
 
 @function darken($color, $contrast, $background: null) {
+  @debug 'hue(#{$color}, #{$contrast}, #{$background})';
   $background: if($background == null, $color, $background);
   $min: 0%;
   $max: if($contrast < 0, 100%, -100%);
@@ -67,7 +68,7 @@
       $r: $rn;
     }
 
-    $prev: next;
+    $prev: $next;
 
     @if $rn < $contrast {
       $min: $test;

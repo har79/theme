@@ -3,6 +3,7 @@
 @use '../check';
 
 @function hue($hue, $saturation: 67%, $contrast: 4.5, $background: null) {
+  @debug 'hue(#{$hue}, #{$saturation}, #{$contrast}, #{$background})';
   @return contrast.darken(
     hsl($hue, $saturation, if($contrast > 0, 100%, 0%)),
     $contrast: $contrast,
@@ -22,6 +23,7 @@ $primary-key: 'primary';
 $secondary-key: 'secondary';
 
 @function build-theme($name, $background, $is-dark: false) {
+  @debug 'build-theme(#{$name}, #{$background}, #{$is-dark})';
   $m: if($is-dark, -1, 1);
   @return (
     $name-key: $name,
