@@ -13,9 +13,9 @@
 }
 
 @function luminance($color) {
-  $r: channel-luminance(color.red($color));
-  $g: channel-luminance(color.green($color));
-  $b: channel-luminance(color.blue($color));
+  $r: channel-luminance(color.channel($color, 'red', $space: rgb));
+  $g: channel-luminance(color.channel($color, 'green', $space: rgb));
+  $b: channel-luminance(color.channel($color, 'blue', $space: rgb));
 
   @return 0.2126 * $r + 0.7152 * $g + 0.0722 * $b;
 }
