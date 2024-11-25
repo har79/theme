@@ -115,9 +115,11 @@ a {
 }
 
 /* stylelint-disable-next-line selector-class-pattern */
-.svg-inline--fa {
+.svg-inline--fa,
+.fa-icon svg {
   /* stylelint-disable-next-line selector-class-pattern */
-  &.svg-inline--fa {
+  &:not(.\9) {
+    height: 1em;
     width: 1em;
   }
 
@@ -125,6 +127,7 @@ a {
 
   @include color.theme-color(color.$icon-key) using ($color) {
     color: $color;
+    fill: currentColor;
 
     a:hover & {
       @include state.hover($color);
