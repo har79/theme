@@ -73,11 +73,11 @@ $-border-width: $-section-width + 2 * 4rem;
 $-border-overflow: max(0px, (100% - $-border-width) / 2);
 $section-padding: calc(1rem + max(0px, (100% - $-section-width) / 2));
 
-@function -section-border($width) {
+@function -section-border($color, $width) {
   @return linear-gradient(
       to right,
       transparent $-border-overflow,
-      color.$border-key calc(5% + $-border-overflow) calc(95% - $-border-overflow),
+      $color calc(5% + $-border-overflow) calc(95% - $-border-overflow),
       transparent calc(100% - $-border-overflow)
     )
     1 / $width;
@@ -87,14 +87,14 @@ $section-padding: calc(1rem + max(0px, (100% - $-section-width) / 2));
   margin-block-start: 1rem;
   @include color.theme-color(color.$border-key) using ($color) {
     border-top: border($color);
+    border-image: -section-border($color, 1px 0 0 0);
   }
-  border-image: -section-border(1px 0 0 0);
 }
 
 @mixin section-border-bottom {
   margin-block-end: 1rem;
   @include color.theme-color(color.$border-key) using ($color) {
     border-bottom: border($color);
+    border-image: -section-border($color, 0 0 1px 0);
   }
-  border-image: -section-border(0 0 1px 0);
 }
