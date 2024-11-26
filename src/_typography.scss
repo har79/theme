@@ -3,35 +3,37 @@
 
 $font-family: futura, sans-serif;
 
-@mixin font($scale, $weight: 400) {
+@mixin font($scale, $weight: 400, $set-color: true) {
   $size: math.pow(math.$phi, $scale * 0.5) * 1rem;
   $height: math.ceil($size + 0.5rem, 0.5);
 
-  @include color.theme-property('color', color.$body-key);
+  @if $set-color {
+    @include color.theme-property('color', color.$body-key);
+  }
   font: $weight #{math.round($size, 0.1)} / #{$height} $font-family;
   text-indent: calc(0.8px - 0.1em);
 }
 
-@mixin title {
-  @include font(4);
+@mixin title($args...) {
+  @include font(4, $args...);
 }
 
-@mixin heading {
-  @include font(3);
+@mixin heading($args...) {
+  @include font(3, $args...);
 }
 
-@mixin subheading {
-  @include font(2);
+@mixin subheading($args...) {
+  @include font(2, $args...);
 }
 
-@mixin section-heading {
-  @include font(1, $weight: 600);
+@mixin section-heading($args...) {
+  @include font(1, $weight: 600, $args...);
 }
 
-@mixin body {
-  @include font(1);
+@mixin body($args...) {
+  @include font(1, $args...);
 }
 
-@mixin small {
-  @include font(0);
+@mixin small($args...) {
+  @include font(0, $args...);
 }
