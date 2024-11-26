@@ -110,8 +110,8 @@
   }
 }
 
-span.current {
-  @include typography.section-heading;
+.nav-link.current {
+  @include typography.section-heading($set-color: false);
 }
 
 .nav-group {
@@ -128,10 +128,6 @@ span.current {
 
   @include layout.desktop {
     button {
-      &.current {
-        @include typography.section-heading;
-      }
-
       // stylelint-disable-next-line selector-class-pattern
       &:not(.\9) {
         @include color.theme-color(color.$action-key) using ($color) {
