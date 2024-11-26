@@ -2,15 +2,8 @@
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="stylesheet" href="..." />
+<link rel="stylesheet" href="../build/main.css" />
 <title>@har79/theme</title>
-<style>
-  .fa-icon {
-    width: 1em;
-    height: 1em;
-    vertical-align: -0.125em;
-  }
-</style>
 
 <a class="skip-link" href="#main">Skip to main content</a>
 
@@ -35,6 +28,41 @@
       </li>
       <li>
         <a href="#" class="nav-link">Item</a>
+      </li>
+      <li class="nav-group">
+        <span class="visually-hidden">Current parent:</span>
+        <a href="#" class="nav-link current">Group</a>
+        <ul>
+          <li>
+            <span class="nav-link current">Item 1</span>
+          </li>
+          <li>
+            <a href="#" class="nav-link">Item 2</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-group">
+        <a href="#" class="nav-link">Group</a>
+        <ul>
+          <li>
+            <a href="#" class="nav-link">Item 1</a>
+          </li>
+          <li>
+            <a href="#" class="nav-link">Item 2</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-group">
+        <span class="visually-hidden">Current parent:</span>
+        <button class="nav-link current" tabindex="-1">Group</button>
+        <ul>
+          <li>
+            <span class="nav-link current">Item 1</span>
+          </li>
+          <li>
+            <a href="#" class="nav-link">Item 2</a>
+          </li>
+        </ul>
       </li>
       <li class="nav-group">
         <button class="nav-link" tabindex="-1">Group</button>
