@@ -31,6 +31,8 @@ margin
 box-shadow
 border
 padding
+align-items
+justify-content
 flex-*
 
 // Decoration

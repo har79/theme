@@ -114,6 +114,10 @@ a {
   @include state.hidden;
 }
 
+.fa-icon {
+  display: inline-flex;
+}
+
 /* stylelint-disable-next-line selector-class-pattern */
 .svg-inline--fa,
 .fa-icon svg {

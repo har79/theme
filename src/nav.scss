@@ -24,6 +24,8 @@
   margin-inline-end: 0.5rem;
   border: none;
   padding: 0;
+  align-items: center;
+  justify-content: center;
 
   @include color.theme-color(color.$icon-key) using ($color) {
     @include state.color-with-hover($color, $internal-outline: true);
@@ -31,7 +33,7 @@
   background: none;
 
   @include layout.mobile {
-    display: block;
+    display: flex;
   }
 
   &:focus {
@@ -52,6 +54,8 @@
     inset: 0;
     transform: translateX(100%);
 
+    overflow: auto;
+
     margin-block-start: 4.5rem;
     padding-block: 0.5rem 1rem;
     padding-inline: 0;
@@ -66,6 +70,11 @@
   }
 
   > li {
+    @include layout.desktop {
+      display: flex;
+      align-items: center;
+    }
+
     @include layout.border-inline(1, 0);
 
     &:last-of-type {
@@ -84,19 +93,28 @@
   }
 }
 
-.nav-link {
-  display: block;
-  min-width: 6rem;
-
+.nav-link,
+.nav-dropdown {
   border: none;
   border-radius: 2px;
-  padding-block: 0.5rem;
-  padding-inline: 1rem;
 
   @include state.link($internal-outline: true);
   @include typography.body;
   background: none;
-  text-align: center;
+}
+
+$link-min-width: 7rem;
+
+.nav-link {
+  display: flex;
+  @include layout.desktop {
+    min-width: $link-min-width;
+  }
+
+  padding-block: 0.5rem;
+  padding-inline: 1rem;
+
+  justify-content: center;
   text-decoration: none;
 
   &:link:hover {
@@ -106,7 +124,33 @@
   @include layout.mobile {
     padding-inline: 2rem;
 
-    text-align: left;
+    justify-content: start;
+  }
+
+  > .nav-dropdown {
+    padding-block: 0;
+  }
+}
+
+.nav-dropdown {
+  // Display
+  display: flex;
+  height: 2rem;
+  height: 1lh;
+  width: 2rem;
+  width: 1lh;
+
+  // Box model
+  box-sizing: content-box;
+  padding: 0.5rem;
+  padding-inline-start: 0rem;
+  align-items: center;
+  justify-content: center;
+
+  @include layout.mobile {
+    &:not(#\9) {
+      display: none;
+    }
   }
 }
 
@@ -115,7 +159,19 @@
 }
 
 .nav-group {
+  position: relative;
+
+  @include layout.desktop {
+    > .nav-link {
+      min-width: $link-min-width + 1.5rem;
+
+      padding-inline-end: 0rem;
+    }
+  }
+
   ul {
+    min-width: 100%;
+
     margin: 0;
     padding: 0;
 
@@ -138,6 +194,7 @@
 
     ul {
       position: absolute;
+      top: 100%;
 
       opacity: 1;
 
