@@ -34,10 +34,10 @@
     "build:cp": "copy-and-watch \"src/**/_*.scss\" build",
     "build:sass": "sass --load-path=node_modules --silence-deprecation=mixed-decls src/main.scss build/main.css",
     "build": "npm-run-all build:*",
-    "server:cp": "npm run build:cp -- --watch",
-    "server:sass": "npm run build:sass -- --watch",
-    "server:example": "serve",
-    "start": "npm-run-all --parallel server:*"
+    "start:cp": "npm run build:cp -- --watch",
+    "start:sass": "npm run build:sass -- --watch",
+    "start:example": "serve",
+    "start": "npm-run-all --parallel start:*"
   },
   "devDependencies": {
     "@har79/config": "github:har79/config",
