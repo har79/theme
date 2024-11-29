@@ -72,6 +72,7 @@
   @include color.theme using ($theme) {
     $background: color.get($theme, $background-key);
     $is-dark: color.get($theme, color.$is-dark-key);
+
     &:link {
       @include -color-with-hover(
         color.get($theme, $color-key),

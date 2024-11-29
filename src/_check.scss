@@ -1,6 +1,7 @@
-@function not-null($value, $message) {
-  @if $value == null {
+@function truthy($value, $message) {
+  @if not $value {
     @error $message;
   }
+
   @return $value;
 }

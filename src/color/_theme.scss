@@ -2,6 +2,8 @@
 @use 'sass:map';
 @use '../check';
 
+/* stylelint-disable scss/no-global-function-names */
+
 @function hue($hue, $saturation: 67%, $contrast: 4.5, $background: null) {
   @return contrast.darken(
     hsl($hue, $saturation, if($contrast > 0, 100%, 0%)),
@@ -23,6 +25,7 @@ $secondary-key: 'secondary';
 
 @function build-theme($name, $background, $is-dark: false) {
   $m: if($is-dark, -1, 1);
+
   @return (
     $name-key: $name,
     $is-dark-key: $is-dark,
@@ -46,7 +49,7 @@ $light-theme: build-theme('light', white);
 $dark-theme: build-theme('dark', black /*hue(0, 0%, $contrast: 9)*/, $is-dark: true);
 
 @function get($theme, $color) {
-  @return check.not-null(
+  @return check.truthy(
     map.get($theme, $color),
     "Couldn't find color `#{$color}` in theme `#{map.get($theme, $name-key)}`."
   );

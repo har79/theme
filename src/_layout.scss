@@ -51,6 +51,7 @@
 
 @mixin border-block($top: 0, $bottom: 0, $gradient: null) {
   border: none;
+
   @include color.theme-color(color.$border-key) using ($color) {
     @if $top > 0 {
       border-top: border($color);
@@ -85,6 +86,7 @@ $section-padding: calc(1rem + max(0px, (100% - $-section-width) / 2));
 
 @mixin section-border-top {
   margin-block-start: 1rem;
+
   @include color.theme-color(color.$border-key) using ($color) {
     border-top: border($color);
     border-image: -section-border($color, 1px 0 0 0);
@@ -93,6 +95,7 @@ $section-padding: calc(1rem + max(0px, (100% - $-section-width) / 2));
 
 @mixin section-border-bottom {
   margin-block-end: 1rem;
+
   @include color.theme-color(color.$border-key) using ($color) {
     border-bottom: border($color);
     border-image: -section-border($color, 0 0 1px 0);

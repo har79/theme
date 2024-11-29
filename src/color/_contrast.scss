@@ -2,6 +2,8 @@
 @use 'sass:math';
 @use '../check';
 
+/* stylelint-disable scss/no-global-function-names */
+
 @function channel-luminance($channel) {
   $srgb: math.div($channel, 255);
 
@@ -33,7 +35,7 @@
 
 // TODO: update to work with themes
 @function check-contrast($color, $background, $contrast: 4.5) {
-  $color: check.not-null($color, '$color must not be null');
+  $color: check.truthy($color, '$color must not be null');
   $c: contrast-ratio($color, $background);
 
   @if $c < $contrast {

@@ -131,7 +131,7 @@ a {
 
   @include color.theme-color(color.$icon-key) using ($color) {
     color: $color;
-    fill: currentColor;
+    fill: currentcolor;
 
     a:hover & {
       @include state.hover($color);

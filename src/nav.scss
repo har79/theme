@@ -107,6 +107,7 @@ $link-min-width: 7rem;
 
 .nav-link {
   display: flex;
+
   @include layout.desktop {
     min-width: $link-min-width;
   }
@@ -143,11 +144,12 @@ $link-min-width: 7rem;
   // Box model
   box-sizing: content-box;
   padding: 0.5rem;
-  padding-inline-start: 0rem;
+  padding-inline-start: 0;
   align-items: center;
   justify-content: center;
 
   @include layout.mobile {
+    /* stylelint-disable-next-line selector-id-pattern */
     &:not(#\9) {
       display: none;
     }
@@ -165,7 +167,7 @@ $link-min-width: 7rem;
     > .nav-link {
       min-width: $link-min-width + 1.5rem;
 
-      padding-inline-end: 0rem;
+      padding-inline-end: 0;
     }
   }
 
