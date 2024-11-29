@@ -1,5 +1,6 @@
-@function truthy($value, $message) {
-  @if not $value {
+@function not-null($value, $message) {
+  /* stylelint-disable-next-line scss/at-if-no-null */
+  @if $value == null {
     @error $message;
   }
 

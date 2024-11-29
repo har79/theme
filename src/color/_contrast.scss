@@ -35,7 +35,7 @@
 
 // TODO: update to work with themes
 @function check-contrast($color, $background, $contrast: 4.5) {
-  $color: check.truthy($color, '$color must not be null');
+  $color: check.not-null($color, '$color must not be null');
   $c: contrast-ratio($color, $background);
 
   @if $c < $contrast {
