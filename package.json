@@ -28,7 +28,7 @@
     "license": "npm run license:check && npm run license:attribution",
     "update": "npm-check-updates --peer -u && npm update",
     "update:check": "npm-check-updates",
-    "preversion": "npm run license:check && npm run fix",
+    "preversion": "npm run license:check && npm run fix && [ -z \"$(git status --porcelain)\" ]",
     "postversion": "git push && git push --tags",
     "prepare": "npm run clean && npm run license:check && npm run build",
     "build:cp": "copy-and-watch \"src/**/_*.scss\" build",
