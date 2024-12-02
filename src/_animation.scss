@@ -1,14 +1,17 @@
 @keyframes fade {
   0% {
+    // Display
     opacity: 0;
   }
 
   100% {
+    // Display
     opacity: initial;
   }
 }
 
 @mixin fade-in {
+  // Decoration
   animation: fade 1s ease 0s 1;
 }
 

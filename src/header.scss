@@ -5,23 +5,28 @@
 
 header,
 footer {
+  // Display
   display: flex;
 
+  // Box
   padding-inline: layout.$section-padding;
   justify-content: space-between;
-
-  @include color.theme-background;
 
   @include layout.mobile {
     padding-inline: 0;
   }
+
+  // Decoration
+  @include color.theme-background;
 }
 
 header {
+  // Layout
   position: sticky;
   top: 0;
   z-index: 1;
 
+  // Box
   @include layout.section-border-bottom;
 
   @include layout.mobile {
@@ -31,17 +36,22 @@ header {
 }
 
 .header-title {
+  // Box
   margin: 0;
 
+  // Decoration
   @include typography.title;
 
   a {
+    // Display
     display: flex;
-
     height: 4rem;
+
+    // Box
     padding-inline: 1rem;
     align-items: center;
 
+    // Decoration
     @include state.link(
       $color-key: color.$primary-key,
       $visited-key: null,
@@ -52,14 +62,17 @@ header {
 }
 
 footer {
+  // Box
   @include layout.section-border-top;
   padding-block: 0.5rem;
   align-items: flex-start;
 
+  // Decoration
   @include typography.small;
 }
 
 .footer-links {
+  // Box
   margin-block: 0.5rem;
   padding-inline: 2rem 1rem;
 }

@@ -2,6 +2,7 @@
 @use 'math';
 
 @mixin fit($spacing: 0) {
+  // Layout
   position: absolute;
   inset: $spacing;
 }
@@ -33,6 +34,7 @@
 }
 
 @mixin border-inline($left: 0, $right: 0) {
+  // Box
   border: none;
 
   @include color.theme-color(color.$border-key) using ($color) {
@@ -50,6 +52,7 @@
 }
 
 @mixin border-block($top: 0, $bottom: 0, $gradient: null) {
+  // Box
   border: none;
 
   @include color.theme-color(color.$border-key) using ($color) {
@@ -85,6 +88,7 @@ $section-padding: calc(1rem + max(0px, (100% - $-section-width) / 2));
 }
 
 @mixin section-border-top {
+  // Box
   margin-block-start: 1rem;
 
   @include color.theme-color(color.$border-key) using ($color) {
@@ -94,6 +98,7 @@ $section-padding: calc(1rem + max(0px, (100% - $-section-width) / 2));
 }
 
 @mixin section-border-bottom {
+  // Box
   margin-block-end: 1rem;
 
   @include color.theme-color(color.$border-key) using ($color) {

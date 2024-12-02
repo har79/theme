@@ -9,8 +9,10 @@
 @use 'typography';
 
 html {
+  // Box
   box-sizing: border-box;
 
+  // Decoration
   font-size: 16px;
 }
 
@@ -23,46 +25,55 @@ html {
 }
 
 body {
+  // Display
   overflow-y: scroll; // Always show scrollbar to prevent layout jumping.
 
   // TODO fade out on navigate?
   // @include animation.fade-in;
 
+  // Decoration
   @include typography.body;
   @include color.theme-background;
 }
 
 body,
 #app {
+  // Display
   display: flex;
-
   min-height: 100vh;
+
+  // Box
   flex-flow: column;
 }
 
 .skip-link {
+  // Layout
   position: absolute !important;
-  z-index: 2;
   inset-inline: 0;
+  z-index: 2;
 
+  &:not(:focus) {
+    @include state.hidden;
+  }
+
+  // Box
   padding-inline: 0.5rem;
 
+  // Decoration
   @include state.link($visited-key: null, $internal-outline: true);
   /* stylelint-disable-next-line color-function-notation */
   @include color.theme-color(color.$background-key) using ($color) {
     background: rgba($color, 0.5);
   }
   text-align: center;
-
-  &:not(:focus) {
-    @include state.hidden;
-  }
 }
 
 main {
+  // Layout
   isolation: isolate;
   flex: auto;
 
+  // Box
   padding-block: 1rem;
 
   > :not(.fullbleed) {
@@ -82,23 +93,27 @@ h5,
 h6,
 p,
 ul {
-  margin-inline: 0;
-  margin-block: 0 1rem;
+  // Box
+  margin: 0 0 1rem;
 }
 
 h1 {
+  // Decoration
   @include typography.heading;
 }
 
 h2 {
+  // Decoration
   @include typography.subheading;
 }
 
 h3 {
+  // Decoration
   @include typography.section-heading;
 }
 
 ul {
+  // Box
   padding-inline-start: 2rem;
 }
 
@@ -107,28 +122,34 @@ ul {
 }
 
 a {
+  // Decoration
   @include state.link;
 }
 
 .visually-hidden:not(:focus, :active) {
+  // Layout
   @include state.hidden;
 }
 
 .fa-icon {
+  // Display
   display: inline-flex;
 }
 
 /* stylelint-disable-next-line selector-class-pattern */
 .svg-inline--fa,
 .fa-icon svg {
+  // Layout
+  vertical-align: text-bottom;
+
+  // Display
   /* stylelint-disable-next-line selector-class-pattern */
   &:not(.\9) {
     height: 1em;
     width: 1em;
   }
 
-  vertical-align: text-bottom;
-
+  // Decoration
   @include color.theme-color(color.$icon-key) using ($color) {
     color: $color;
     fill: currentcolor;

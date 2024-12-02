@@ -1,11 +1,9 @@
 ## Property sorting
 
 ```
-// Mixins
 @extend
 @mixin
 
-// Content
 content
 
 // Layout
@@ -14,6 +12,7 @@ position
 inset / top / right / bottom / left
 z-index
 flex
+align-self
 vertical-align
 
 // Display
@@ -25,7 +24,7 @@ overflow
 clip
 transform
 
-// Box model
+// Box
 box-sizing
 margin
 box-shadow
@@ -34,12 +33,15 @@ padding
 align-items
 justify-content
 flex-*
+white-space
 
 // Decoration
+pointer-events
 background
 color
 font-*
 text-*
+list-style
 outline
 animation
 transition

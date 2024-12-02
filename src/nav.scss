@@ -5,36 +5,42 @@
 @use 'typography';
 
 .nav {
+  // Display
   display: flex;
-
-  align-items: flex-end;
 
   @include layout.mobile {
     min-width: 4rem;
   }
+
+  // Box
+  align-items: flex-end;
 }
 
 .nav-button {
+  // Layout
   align-self: center;
 
+  // Display
   display: none;
   height: 4rem;
   width: 4rem;
 
+  @include layout.mobile {
+    display: flex;
+  }
+
+  // Box
   margin-inline-end: 0.5rem;
   border: none;
   padding: 0;
   align-items: center;
   justify-content: center;
 
+  // Decoration
   @include color.theme-color(color.$icon-key) using ($color) {
     @include state.color-with-hover($color, $internal-outline: true);
   }
   background: none;
-
-  @include layout.mobile {
-    display: flex;
-  }
 
   &:focus {
     pointer-events: none;
@@ -42,36 +48,46 @@
 }
 
 .nav-links {
+  // Display
   display: flex;
 
+  // Box
   margin-block: 0;
   padding-inline: 0.5rem 1rem;
 
+  // Decoration
   list-style: none;
 
   @include layout.mobile {
+    // Layout
     position: fixed;
     inset: 0;
+
+    // Display
+    overflow: auto;
     transform: translateX(100%);
 
-    overflow: auto;
+    .nav:focus-within & {
+      transform: none;
+    }
 
+    // Box
     margin-block-start: 4.5rem;
     padding-block: 0.5rem 1rem;
     padding-inline: 0;
     flex-flow: column;
 
+    // Decoration
     @include color.theme-background;
     transition: animation.transition(transform);
-
-    .nav:focus-within & {
-      transform: none;
-    }
   }
 
   > li {
     @include layout.desktop {
+      // Display
       display: flex;
+
+      // Box
       align-items: center;
     }
 
@@ -95,9 +111,11 @@
 
 .nav-link,
 .nav-dropdown {
+  // Box
   border: none;
   border-radius: 2px;
 
+  // Decoration
   @include state.link($internal-outline: true);
   @include typography.body;
   background: none;
@@ -106,21 +124,17 @@
 $link-min-width: 7rem;
 
 .nav-link {
+  // Display
   display: flex;
 
   @include layout.desktop {
     min-width: $link-min-width;
   }
 
+  // Box
   padding-block: 0.5rem;
   padding-inline: 1rem;
-
   justify-content: center;
-  text-decoration: none;
-
-  &:link:hover {
-    text-decoration: underline;
-  }
 
   @include layout.mobile {
     padding-inline: 2rem;
@@ -128,7 +142,15 @@ $link-min-width: 7rem;
     justify-content: start;
   }
 
+  // Decoration
+  text-decoration: none;
+
+  &:link:hover {
+    text-decoration: underline;
+  }
+
   > .nav-dropdown {
+    // Box
     padding-block: 0;
   }
 }
@@ -141,78 +163,92 @@ $link-min-width: 7rem;
   width: 2rem;
   width: 1lh;
 
-  // Box model
-  box-sizing: content-box;
-  padding: 0.5rem;
-  padding-inline-start: 0;
-  align-items: center;
-  justify-content: center;
-
   @include layout.mobile {
     /* stylelint-disable-next-line selector-id-pattern */
     &:not(#\9) {
       display: none;
     }
   }
+
+  // Box
+  box-sizing: content-box;
+  padding: 0.5rem;
+  padding-inline-start: 0;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-link.current {
+  // Decoration
   @include typography.section-heading($set-color: false);
 }
 
 .nav-group {
+  // Layout
   position: relative;
 
   @include layout.desktop {
     > .nav-link {
+      // Display
       min-width: $link-min-width + 1.5rem;
 
+      // Box
       padding-inline-end: 0;
     }
   }
 
   ul {
+    // Display
     min-width: 100%;
 
+    // Box
     margin: 0;
     padding: 0;
 
+    // Decoration
     list-style: none;
   }
 
   li {
+    // Box
     @include layout.border-block(1, 0);
   }
 
   @include layout.desktop {
-    button {
-      // stylelint-disable-next-line selector-class-pattern
-      &:not(.\9) {
-        @include color.theme-color(color.$action-key) using ($color) {
-          @include state.color-with-hover($color, $internal-outline: true);
-        }
+    // stylelint-disable-next-line selector-class-pattern
+    button:not(.\9) {
+      // Decoration
+      @include color.theme-color(color.$action-key) using ($color) {
+        @include state.color-with-hover($color, $internal-outline: true);
       }
     }
 
     ul {
+      // Layout
       position: absolute;
       top: 100%;
 
+      // Display
       opacity: 1;
 
+      // Box
       @include color.theme using ($theme) {
         border: layout.border(color.get($theme, color.$border-key));
         border-top: layout.border(color.get($theme, color.$background-key));
       }
       border-radius: 0 0 4px 4px;
 
+      // Decoration
       @include color.theme-background;
       transition: animation.transition(opacity);
     }
 
     &:not(:hover, :focus-within) {
       ul {
+        // Layout
         @include state.hidden;
+
+        // Display
         opacity: 0;
       }
     }
@@ -220,18 +256,22 @@ $link-min-width: 7rem;
 
   @include layout.mobile {
     button {
+      // Decoration
       pointer-events: none;
     }
 
     .nav-link {
+      // Display
       width: 100%;
     }
 
     ul .nav-link {
+      // Box
       padding-inline-start: 4rem;
     }
 
     li {
+      // Decoration
       @include color.theme-color(color.$border-key) using ($color) {
         @include layout.border-block(1, 0, $gradient: layout.border-mobile-gradient($color));
       }

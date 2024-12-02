@@ -7,6 +7,7 @@ $font-family: futura, sans-serif;
   $size: math.pow(math.$phi, $scale * 0.5) * 1rem;
   $height: math.ceil($size + 0.5rem, 0.5);
 
+  // Decoration
   @if $set-color {
     @include color.theme-property('color', color.$body-key);
   }

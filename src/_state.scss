@@ -3,25 +3,30 @@
 @use 'sass:map';
 
 @mixin focus($internal-outline: false, $radius: 2px) {
+  // Layout
   position: relative;
 
+  // Decoration
   -webkit-tap-highlight-color: transparent;
   outline: none;
 
   &::after {
     content: '';
 
+    // Layout
     @include layout.fit(if($internal-outline, 2px, -2px));
 
+    // Border
     border-radius: calc($radius + 2px);
 
+    // Decoration
     outline: 2px solid currentcolor;
   }
 }
 
 @mixin -hover($color, $background, $is-dark) {
-  $contrast: if($is-dark, -3, 3);
-  color: color.check-contrast(color.darken($color, $contrast: $contrast), $background);
+  // Decoration
+  color: color.check-contrast(color.darken($color, $contrast: if($is-dark, -3, 3)), $background);
 }
 
 @mixin hover($color, $background: null) {
@@ -35,6 +40,7 @@
 }
 
 @mixin -color-with-hover($color, $background, $is-dark, $internal-outline: false, $radius: 2px) {
+  // Decoration
   color: color.check-contrast($color, $background);
 
   &:hover {
@@ -97,13 +103,16 @@
 
 // https://www.a11yproject.com/posts/how-to-hide-content/
 @mixin hidden {
+  // Layout
   position: absolute;
 
+  // Display
   height: 1px;
   width: 1px;
   overflow: hidden;
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
 
+  // Box
   white-space: nowrap;
 }
