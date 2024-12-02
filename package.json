@@ -39,7 +39,7 @@
     "start": "npm-run-all --parallel start:*"
   },
   "devDependencies": {
-    "@har79/config": "github:har79/config",
+    "@har79/config": "^6.2.1",
     "@ianvs/prettier-plugin-sort-imports": "^4.4.0",
     "copy-and-watch": "^0.1.8",
     "license-checker": "^25.0.1",
