@@ -1,3 +1,16 @@
+## Install
+
+```
+corepack enable pnpm
+pnpm i
+```
+
+## Run example
+
+```
+pnpm start
+```
+
 ## Property sorting
 
 ```
