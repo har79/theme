@@ -23,9 +23,6 @@ importers:
       normalize.css:
         specifier: ^8.0.1
         version: 8.0.1
-      npm-check-updates:
-        specifier: ^17.1.11
-        version: 17.1.11
       npm-run-all:
         specifier: ^4.1.5
         version: 4.1.5
@@ -1342,11 +1339,6 @@ packages:
 
   normalize.css@8.0.1:
     resolution: {integrity: sha512-qizSNPO93t1YUuUhP22btGOo3chcvDFqFaj2TRybP0DMxkHOCTYwp3n34fel4a31ORXy4m1Xq0Gyqpb5m33qIg==}
-
-  npm-check-updates@17.1.11:
-    resolution: {integrity: sha512-TR2RuGIH7P3Qrb0jfdC/nT7JWqXPKjDlxuNQt3kx4oNVf1Pn5SBRB7KLypgYZhruivJthgTtfkkyK4mz342VjA==}
-    engines: {node: ^18.18.0 || >=20.0.0, npm: '>=8.12.1'}
-    hasBin: true
 
   npm-license@0.3.3:
     resolution: {integrity: sha512-NxvqmkWieR7fFwzUu1bLky75flVrxTB+Le/C/opOChFaF04o+kl6ng3FW9b51ce8rVdw6ma9rsvpu6Uok5eg/g==}
@@ -3452,8 +3444,6 @@ snapshots:
   normalize-path@3.0.0: {}
 
   normalize.css@8.0.1: {}
-
-  npm-check-updates@17.1.11: {}
 
   npm-license@0.3.3:
     dependencies:
