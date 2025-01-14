@@ -1,4 +1,4 @@
-@use 'color';
+@use './color';
 @use 'math';
 
 @mixin fit($spacing: 0) {
@@ -26,7 +26,12 @@
 }
 
 @function border-gradient($color, $direction) {
-  @return linear-gradient(to $direction, transparent 15%, $color 40% 60%, transparent 85%);
+  @return linear-gradient(
+    to $direction,
+    transparent 15%,
+    $color 40% 60%,
+    transparent 85%
+  );
 }
 
 @function border-mobile-gradient($color) {

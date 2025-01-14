@@ -46,7 +46,11 @@ $light-theme: build-theme('light', white);
 
 /// Dark theme
 // TODO: changing to calculated grey causes infinite loop?
-$dark-theme: build-theme('dark', black /*hue(0, 0%, $contrast: 9)*/, $is-dark: true);
+$dark-theme: build-theme(
+  'dark',
+  black /*hue(0, 0%, $contrast: 9)*/,
+  $is-dark: true
+);
 
 @function get($theme, $color) {
   @return check.not-null(

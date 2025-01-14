@@ -1,8 +1,8 @@
-@use 'animation';
-@use 'color';
-@use 'layout';
-@use 'state';
-@use 'typography';
+@use './animation';
+@use './color';
+@use './layout';
+@use './state';
+@use './typography';
 
 .nav {
   // Display
@@ -99,10 +99,18 @@
 
     @include layout.mobile {
       @include color.theme-color(color.$border-key) using ($color) {
-        @include layout.border-block(1, 0, $gradient: layout.border-mobile-gradient($color));
+        @include layout.border-block(
+          1,
+          0,
+          $gradient: layout.border-mobile-gradient($color)
+        );
 
         &:last-of-type {
-          @include layout.border-block(1, 1, $gradient: layout.border-mobile-gradient($color));
+          @include layout.border-block(
+            1,
+            1,
+            $gradient: layout.border-mobile-gradient($color)
+          );
         }
       }
     }
@@ -273,7 +281,11 @@ $link-min-width: 7rem;
     li {
       // Decoration
       @include color.theme-color(color.$border-key) using ($color) {
-        @include layout.border-block(1, 0, $gradient: layout.border-mobile-gradient($color));
+        @include layout.border-block(
+          1,
+          0,
+          $gradient: layout.border-mobile-gradient($color)
+        );
       }
     }
   }

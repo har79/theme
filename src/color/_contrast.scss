@@ -59,7 +59,11 @@
     $next: color.scale($color, $lightness: $test);
 
     @if $next == $c or $next == $prev {
-      @return check-contrast($c, $background: $background, $contrast: $contrast);
+      @return check-contrast(
+        $c,
+        $background: $background,
+        $contrast: $contrast
+      );
     }
 
     $rn: contrast-ratio($next, $background);

@@ -1,12 +1,12 @@
 @charset 'utf-8';
 @forward 'normalize.css/normalize.css';
-@forward 'header';
-@forward 'nav';
-@use 'animation';
-@use 'color';
-@use 'layout';
-@use 'state';
-@use 'typography';
+@forward './header';
+@forward './nav';
+@use './animation';
+@use './color';
+@use './layout';
+@use './state';
+@use './typography';
 
 html {
   // Box

@@ -1,5 +1,5 @@
-@use 'color';
-@use 'layout';
+@use './color';
+@use './layout';
 @use 'sass:map';
 
 @mixin focus($internal-outline: false, $radius: 2px) {
@@ -26,7 +26,10 @@
 
 @mixin -hover($color, $background, $is-dark) {
   // Decoration
-  color: color.check-contrast(color.darken($color, $contrast: if($is-dark, -3, 3)), $background);
+  color: color.check-contrast(
+    color.darken($color, $contrast: if($is-dark, -3, 3)),
+    $background
+  );
 }
 
 @mixin hover($color, $background: null) {
@@ -39,7 +42,13 @@
   }
 }
 
-@mixin -color-with-hover($color, $background, $is-dark, $internal-outline: false, $radius: 2px) {
+@mixin -color-with-hover(
+  $color,
+  $background,
+  $is-dark,
+  $internal-outline: false,
+  $radius: 2px
+) {
   // Decoration
   color: color.check-contrast($color, $background);
 
