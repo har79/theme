@@ -93,6 +93,9 @@ h5,
 h6,
 p,
 ul {
+  // Display
+  max-width: 70ch;
+
   // Box
   margin: 0 0 1rem;
 }
