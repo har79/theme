@@ -35,7 +35,12 @@
 }
 
 @function border-mobile-gradient($color) {
-  @return linear-gradient(to right, $color 60%, transparent 85%);
+  @return linear-gradient(
+    to right,
+    transparent $-border-overflow,
+    $color calc(5% + $-border-overflow) 60%,
+    transparent 85%
+  );
 }
 
 @mixin border-inline($left: 0, $right: 0) {
@@ -56,7 +61,7 @@
   }
 }
 
-@mixin border-block($top: 0, $bottom: 0, $gradient: null) {
+@mixin border-block($top: 0, $bottom: 0, $is-mobile: false) {
   // Box
   border: none;
 
@@ -69,7 +74,11 @@
       border-bottom: border($color);
     }
 
-    $gradient: if($gradient, $gradient, border-gradient($color, right));
+    $gradient: if(
+      $is-mobile,
+      border-mobile-gradient($color),
+      border-gradient($color, right)
+    );
     $width: ($top * 1px) 0 ($bottom * 1px) 0;
     border-image: $gradient 1 / $width;
   }

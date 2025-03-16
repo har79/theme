@@ -72,9 +72,8 @@
     }
 
     // Box
-    margin-block-start: 4.5rem;
-    padding-block: 0.5rem 1rem;
-    padding-inline: 0;
+    margin-block-start: calc(4rem + 1px);
+    padding: 0 0 1rem;
     flex-flow: column;
 
     // Decoration
@@ -89,30 +88,16 @@
 
       // Box
       align-items: center;
-    }
 
-    @include layout.border-inline(1, 0);
+      @include layout.border-inline(0, 1);
 
-    &:last-of-type {
-      @include layout.border-inline(1, 1);
+      &:first-of-type {
+        @include layout.border-inline(1, 1);
+      }
     }
 
     @include layout.mobile {
-      @include color.theme-color(color.$border-key) using ($color) {
-        @include layout.border-block(
-          1,
-          0,
-          $gradient: layout.border-mobile-gradient($color)
-        );
-
-        &:last-of-type {
-          @include layout.border-block(
-            1,
-            1,
-            $gradient: layout.border-mobile-gradient($color)
-          );
-        }
-      }
+      @include layout.border-block(0, 1, $is-mobile: true);
     }
   }
 }
@@ -144,6 +129,10 @@ $link-min-width: 7rem;
   padding-inline: 1rem;
   justify-content: center;
 
+  .nav-group ul & {
+    justify-content: start;
+  }
+
   @include layout.mobile {
     padding-inline: 2rem;
 
@@ -152,6 +141,7 @@ $link-min-width: 7rem;
 
   // Decoration
   text-decoration: none;
+  user-select: none;
 
   &:link:hover {
     text-decoration: underline;
@@ -205,10 +195,12 @@ $link-min-width: 7rem;
     }
   }
 
-  ul {
+  > ul {
     // Display
     min-width: 100%;
+  }
 
+  ul {
     // Box
     margin: 0;
     padding: 0;
@@ -231,7 +223,7 @@ $link-min-width: 7rem;
       }
     }
 
-    ul {
+    > ul {
       // Layout
       position: absolute;
       top: 100%;
@@ -251,8 +243,18 @@ $link-min-width: 7rem;
       transition: animation.transition(opacity);
     }
 
+    ul ul .nav-link {
+      // Box
+      padding-inline-start: 2rem;
+    }
+
+    ul ul ul .nav-link {
+      // Box
+      padding-inline-start: 3rem;
+    }
+
     &:not(:hover, :focus-within) {
-      ul {
+      > ul {
         // Layout
         @include state.hidden;
 
@@ -278,15 +280,19 @@ $link-min-width: 7rem;
       padding-inline-start: 4rem;
     }
 
+    ul ul .nav-link {
+      // Box
+      padding-inline-start: 6rem;
+    }
+
+    ul ul ul .nav-link {
+      // Box
+      padding-inline-start: 8rem;
+    }
+
     li {
       // Decoration
-      @include color.theme-color(color.$border-key) using ($color) {
-        @include layout.border-block(
-          1,
-          0,
-          $gradient: layout.border-mobile-gradient($color)
-        );
-      }
+      @include layout.border-block(1, 0, $is-mobile: true);
     }
   }
 }
