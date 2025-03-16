@@ -73,7 +73,8 @@
 
     // Box
     margin-block-start: calc(4rem + 1px);
-    padding: 0 0 1rem;
+    padding-block: 0 1rem;
+    padding-inline: 0;
     flex-flow: column;
 
     // Decoration
@@ -121,7 +122,9 @@ $link-min-width: 7rem;
   display: flex;
 
   @include layout.desktop {
-    min-width: $link-min-width;
+    li:not(.nav-group) > & {
+      min-width: $link-min-width;
+    }
   }
 
   // Box
@@ -149,7 +152,7 @@ $link-min-width: 7rem;
 
   > .nav-dropdown {
     // Box
-    padding-block: 0;
+    padding: 0;
   }
 }
 
@@ -171,7 +174,6 @@ $link-min-width: 7rem;
   // Box
   box-sizing: content-box;
   padding: 0.5rem;
-  padding-inline-start: 0;
   align-items: center;
   justify-content: center;
 }
@@ -186,19 +188,20 @@ $link-min-width: 7rem;
   position: relative;
 
   @include layout.desktop {
+    // Display
+    min-width: $link-min-width + 1.5rem;
+
     > .nav-link {
       // Display
-      min-width: $link-min-width + 1.5rem;
+      width: 100%;
 
       // Box
       padding-inline-end: 0;
     }
   }
 
-  > ul {
     // Display
     min-width: 100%;
-  }
 
   ul {
     // Box
@@ -230,6 +233,7 @@ $link-min-width: 7rem;
 
       // Display
       opacity: 1;
+      min-width: 100%;
 
       // Box
       @include color.theme using ($theme) {
