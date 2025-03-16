@@ -192,8 +192,8 @@ $link-min-width: 7rem;
     min-width: $link-min-width + 1.5rem;
 
     > .nav-link {
-      // Display
-      width: 100%;
+      // Layout
+      flex: auto;
 
       // Box
       padding-inline-end: 0;
