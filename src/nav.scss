@@ -3,6 +3,7 @@
 @use './layout';
 @use './state';
 @use './typography';
+@use 'sass:selector';
 
 .nav {
   // Display
@@ -104,7 +105,7 @@
 }
 
 .nav-link,
-.nav-dropdown {
+.nav-dropdown-icon {
   // Box
   border: none;
   border-radius: 2px;
@@ -132,7 +133,7 @@ $link-min-width: 7rem;
   padding-inline: 1rem;
   justify-content: center;
 
-  .nav-group ul & {
+  .nav-group .nav-dropdown & {
     justify-content: start;
   }
 
@@ -150,13 +151,13 @@ $link-min-width: 7rem;
     text-decoration: underline;
   }
 
-  > .nav-dropdown {
+  > .nav-dropdown-icon {
     // Box
     padding: 0;
   }
 }
 
-.nav-dropdown {
+.nav-dropdown-icon {
   // Display
   display: flex;
   height: 2rem;
@@ -200,8 +201,8 @@ $link-min-width: 7rem;
     }
   }
 
-    // Display
-    min-width: 100%;
+  // Display
+  min-width: 100%;
 
   ul {
     // Box
@@ -226,7 +227,7 @@ $link-min-width: 7rem;
       }
     }
 
-    > ul {
+    .nav-dropdown {
       // Layout
       position: absolute;
       top: 100%;
@@ -235,16 +236,32 @@ $link-min-width: 7rem;
       opacity: 1;
       min-width: 100%;
 
-      // Box
-      @include color.theme using ($theme) {
-        border: layout.border(color.get($theme, color.$border-key));
-        border-top: layout.border(color.get($theme, color.$background-key));
-      }
-      border-radius: 0 0 4px 4px;
+      @at-root #{selector.unify(&, div)} {
+        $shadow: 2rem;
+        margin: 0 calc(-1 * $shadow);
+        padding: 0 $shadow $shadow;
+        width: calc(100% + 2 * $shadow);
+        overflow: hidden;
 
-      // Decoration
-      @include color.theme-background;
-      transition: animation.transition(opacity);
+        // Decoration
+        > ul {
+          @include layout.nav-dropdown-shadow;
+        }
+      }
+
+      @at-root #{selector.unify(&, ul)},
+        & > ul {
+        // Box
+        @include color.theme using ($theme) {
+          border: layout.border(color.get($theme, color.$border-key));
+          border-top: layout.border(color.get($theme, color.$background-key));
+        }
+        border-radius: 0 0 4px 4px;
+
+        // Decoration
+        @include color.theme-background;
+        transition: animation.transition(opacity);
+      }
     }
 
     ul ul .nav-link {
@@ -258,7 +275,7 @@ $link-min-width: 7rem;
     }
 
     &:not(:hover, :focus-within) {
-      > ul {
+      > .nav-dropdown {
         // Layout
         @include state.hidden;
 

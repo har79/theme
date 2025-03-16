@@ -1,3 +1,4 @@
+@use './animation';
 @use './color';
 @use './layout';
 @use './state';
@@ -9,6 +10,8 @@ footer {
   display: flex;
 
   // Box
+  margin-inline: layout.$section-margin;
+
   padding-inline: layout.$section-padding;
   justify-content: space-between;
 
@@ -21,17 +24,24 @@ footer {
 }
 
 header {
+  // Header has an extra 4rem above the viewport to increase height so that
+  // the shadow still works after applying a negative spread.
+
   // Layout
   position: sticky;
-  top: 0;
+  top: -4rem;
   z-index: 1;
 
   // Box
   @include layout.section-border-bottom;
+  margin-top: -4rem;
+  padding-top: 4rem;
 
-  @include layout.mobile {
-    // TODO: this breaks the nav menu
-    // position: initial;
+  // Decoration
+  transition: animation.transition(box-shadow);
+
+  &.stuck {
+    @include layout.section-shadow-bottom;
   }
 }
 

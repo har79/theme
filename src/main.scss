@@ -77,7 +77,7 @@ main {
   padding-block: 1rem;
 
   > :not(.fullbleed) {
-    margin-inline: layout.$section-padding;
+    margin-inline: calc(layout.$section-margin + layout.$section-padding);
   }
 
   > :not(.no-padding) {
