@@ -101,7 +101,6 @@
 $-section-width: 75rem;
 $-border-width: 4rem;
 $-transition: min(5%, $-border-width);
-
 $section-margin: max(0px, (100% - $-section-width - 2 * $-border-width) / 2);
 $section-padding: calc(
   1rem + clamp(0px, (100% - $-section-width) / 2, $-border-width)
