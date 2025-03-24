@@ -10,35 +10,80 @@
 
 <div id="header-scroll-sentinel"></div>
 
-<header id="header">
-  <p class="header-title">
-    <a class="logo-link" href="/">@har79/theme</a>
-  </p>
+<header id="header" class="header-container">
+  <div class="header-content">
+    <p class="header-title">
+      <a class="logo-link" href="/">@har79/theme</a>
+    </p>
 
-  <nav aria-label="Main menu" class="nav">
-    <button class="nav-button" tabindex="-1" onclick="this.focus()">
-      <span class="fa-icon">
-        <!-- https://fontawesome.com/icons/bars?f=classic&s=solid -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" /></svg>
-      </span>
-    </button>
-    <ul class="nav-links">
-      <li>
-        <span class="visually-hidden">Current page:</span>
-        <span class="nav-link current">Home</span>
-      </li>
-      <li>
-        <a href="#" class="nav-link">Item</a>
-      </li>
-      <li class="nav-group">
-        <span class="visually-hidden">Current parent:</span>
-        <a href="#" class="nav-link current">Link</a>
-        <button class="nav-dropdown-icon fa-icon" onclick="this.focus()" tabindex="-1">
-          <!-- https://fontawesome.com/icons/caret-down?f=classic&s=solid -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg>
-        </button>
-        <div class="nav-dropdown">
-          <ul>
+    <nav aria-label="Main menu" class="nav">
+      <button class="nav-button" tabindex="-1" onclick="this.focus()">
+        <span class="fa-icon">
+          <!-- https://fontawesome.com/icons/bars?f=classic&s=solid -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z" /></svg>
+        </span>
+      </button>
+      <ul class="nav-links">
+        <li>
+          <span class="visually-hidden">Current page:</span>
+          <span class="nav-link current">Home</span>
+        </li>
+        <li>
+          <a href="#" class="nav-link">Item</a>
+        </li>
+        <li class="nav-group">
+          <span class="visually-hidden">Current parent:</span>
+          <a href="#" class="nav-link current">Link</a>
+          <button class="nav-dropdown-icon fa-icon" onclick="this.focus()" tabindex="-1">
+            <!-- https://fontawesome.com/icons/caret-down?f=classic&s=solid -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg>
+          </button>
+          <div class="nav-dropdown">
+            <ul>
+              <li>
+                <span class="visually-hidden">Current section:</span>
+                <span class="nav-link current">Section 1</span>
+                <ul>
+                  <li>
+                    <span class="visually-hidden">Current page:</span>
+                    <span class="nav-link current">Page 1</span>
+                  </li>
+                  <li>
+                    <a href="#" class="nav-link">Page 2</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#" class="nav-link">Item 2</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-group">
+          <a href="#" class="nav-link">Link</a>
+          <button class="nav-dropdown-icon fa-icon" onclick="this.focus()" tabindex="-1">
+            <!-- https://fontawesome.com/icons/caret-down?f=classic&s=solid -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg>
+          </button>
+          <ul class="nav-dropdown">
+            <li>
+              <a href="#" class="nav-link">Item 1</a>
+            </li>
+            <li>
+              <a href="#" class="nav-link">Item 2</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-group">
+          <span class="visually-hidden">Current parent:</span>
+          <button class="nav-link current" onclick="this.focus()" tabindex="-1">
+            Button
+            <span class="nav-dropdown-icon fa-icon">
+              <!-- https://fontawesome.com/icons/caret-down?f=classic&s=solid -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg>
+            </span>
+          </button>
+          <ul class="nav-dropdown">
             <li>
               <span class="visually-hidden">Current section:</span>
               <span class="nav-link current">Section 1</span>
@@ -56,70 +101,27 @@
               <a href="#" class="nav-link">Item 2</a>
             </li>
           </ul>
-        </div>
-      </li>
-      <li class="nav-group">
-        <a href="#" class="nav-link">Link</a>
-        <button class="nav-dropdown-icon fa-icon" onclick="this.focus()" tabindex="-1">
-          <!-- https://fontawesome.com/icons/caret-down?f=classic&s=solid -->
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg>
-        </button>
-        <ul class="nav-dropdown">
-          <li>
-            <a href="#" class="nav-link">Item 1</a>
-          </li>
-          <li>
-            <a href="#" class="nav-link">Item 2</a>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-group">
-        <span class="visually-hidden">Current parent:</span>
-        <button class="nav-link current" onclick="this.focus()" tabindex="-1">
-          Button
-          <span class="nav-dropdown-icon fa-icon">
-            <!-- https://fontawesome.com/icons/caret-down?f=classic&s=solid -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg>
-          </span>
-        </button>
-        <ul class="nav-dropdown">
-          <li>
-            <span class="visually-hidden">Current section:</span>
-            <span class="nav-link current">Section 1</span>
-            <ul>
-              <li>
-                <span class="visually-hidden">Current page:</span>
-                <span class="nav-link current">Page 1</span>
-              </li>
-              <li>
-                <a href="#" class="nav-link">Page 2</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#" class="nav-link">Item 2</a>
-          </li>
-        </ul>
-      </li>
-      <li class="nav-group">
-        <button class="nav-link" onclick="this.focus()" tabindex="-1">
-          Button
-          <span class="nav-dropdown-icon fa-icon">
-            <!-- https://fontawesome.com/icons/caret-down?f=classic&s=solid -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg>
-          </span>
-        </button>
-        <ul class="nav-dropdown">
-          <li>
-            <a href="#" class="nav-link">Item 1</a>
-          </li>
-          <li>
-            <a href="#" class="nav-link">Item 2</a>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
+        </li>
+        <li class="nav-group">
+          <button class="nav-link" onclick="this.focus()" tabindex="-1">
+            Button
+            <span class="nav-dropdown-icon fa-icon">
+              <!-- https://fontawesome.com/icons/caret-down?f=classic&s=solid -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M137.4 374.6c12.5 12.5 32.8 12.5 45.3 0l128-128c9.2-9.2 11.9-22.9 6.9-34.9s-16.6-19.8-29.6-19.8L32 192c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9l128 128z"/></svg>
+            </span>
+          </button>
+          <ul class="nav-dropdown">
+            <li>
+              <a href="#" class="nav-link">Item 1</a>
+            </li>
+            <li>
+              <a href="#" class="nav-link">Item 2</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
 <script>

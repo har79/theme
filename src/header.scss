@@ -4,7 +4,13 @@
 @use './state';
 @use './typography';
 
-header,
+.header-container,
+footer {
+  // Decoration
+  @include color.theme-background;
+}
+
+.header-content,
 footer {
   // Display
   display: flex;
@@ -18,12 +24,9 @@ footer {
   @include layout.mobile {
     padding-inline: 0;
   }
-
-  // Decoration
-  @include color.theme-background;
 }
 
-header {
+.header-container {
   // Header has an extra 4rem above the viewport to increase height so that
   // the shadow still works after applying a negative spread.
 
@@ -33,14 +36,19 @@ header {
   z-index: 1;
 
   // Box
+  margin-block-start: -4rem;
+}
+
+.header-content {
+  // Box
   @include layout.section-border-bottom;
-  margin-top: -4rem;
-  padding-top: 4rem;
+  margin-block: 0;
+  padding-block-start: 4rem;
 
   // Decoration
   transition: animation.transition(box-shadow);
 
-  &.stuck {
+  .stuck & {
     @include layout.section-shadow-bottom;
   }
 }
