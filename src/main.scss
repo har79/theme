@@ -80,7 +80,7 @@ main {
     margin-inline: calc(layout.$section-margin + layout.$section-padding);
   }
 
-  > :not(.no-padding) {
+  > :where(:not(.no-padding)) {
     padding-inline: 1rem;
   }
 }
