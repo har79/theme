@@ -11,6 +11,7 @@
 html {
   // Box
   box-sizing: border-box;
+  scroll-padding-block-start: layout.$scroll-padding;
 
   // Decoration
   font-size: 16px;

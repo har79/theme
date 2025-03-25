@@ -63,7 +63,7 @@ footer {
   a {
     // Display
     display: flex;
-    height: 4rem;
+    height: layout.$header-title-height;
 
     // Box
     padding-inline: 1rem;

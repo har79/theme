@@ -98,6 +98,7 @@
 
 /* Section styling */
 
+$header-title-height: 4rem;
 $-section-width: 75rem;
 $-border-width: 4rem;
 $-transition: min(5%, $-border-width);
@@ -136,14 +137,15 @@ $section-padding: calc(
   }
 }
 
+$-shadow-height: 1rem;
 $-shadow-transparency: 0.38;
 
 @mixin section-shadow-bottom {
   @include color.theme-color(color.$border-key) using ($color) {
     $-shadow-color: rgba($color, $-shadow-transparency);
     box-shadow:
-      0 1rem 1rem -1rem $-shadow-color,
-      0 2rem 1rem -2rem $-shadow-color;
+      0 1rem $-shadow-height -1rem $-shadow-color,
+      0 2rem $-shadow-height -2rem $-shadow-color;
   }
 }
 
@@ -155,3 +157,5 @@ $-shadow-transparency: 0.38;
       0 1rem 1rem -1rem $-shadow-color;
   }
 }
+
+$scroll-padding: $header-title-height + $-shadow-height;
