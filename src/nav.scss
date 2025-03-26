@@ -56,6 +56,7 @@
   // Box
   margin-block: 0;
   padding-inline: 0.5rem 1rem;
+  flex-flow: wrap;
 
   // Decoration
   list-style: none;
@@ -91,12 +92,10 @@
 
       // Box
       align-items: center;
+      margin-inline-end: -1px; // Hide duplicate borders when not wrapping.
 
-      @include layout.border-inline(0, 1);
-
-      &:first-of-type {
-        @include layout.border-inline(1, 1);
-      }
+      // Border on both sides to support wrapping.
+      @include layout.border-inline(1, 1);
     }
 
     @include layout.mobile {
@@ -229,6 +228,9 @@ $link-min-width: 7rem;
     }
 
     .nav-dropdown {
+      // Position
+      z-index: 1; // Ensure it renders over other nav links when wrapped.
+
       // Layout
       position: absolute;
       top: 100%;
