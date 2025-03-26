@@ -40,6 +40,9 @@ footer {
 }
 
 .header-content {
+  // Display
+  display: flex;
+
   // Box
   @include layout.section-border-bottom;
   margin-block: 0;
@@ -54,6 +57,9 @@ footer {
 }
 
 .header-title {
+  // Layout
+  align-self: center;
+
   // Box
   margin: 0;
 
