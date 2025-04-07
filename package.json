@@ -34,7 +34,7 @@
     "build": "npm-run-all build:*",
     "start:cp": "npm run build:cp -- --watch",
     "start:sass": "npm run build:sass -- --watch",
-    "start:example": "serve",
+    "start:example": "serve example",
     "start": "npm-run-all --parallel start:*"
   },
   "devDependencies": {
