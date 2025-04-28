@@ -29,7 +29,7 @@
     "preversion": "npm run license:check && npm run fix && [ -z \"$(git status --porcelain)\" ]",
     "postversion": "git push && git push --tags",
     "prepare": "npm run clean && npm run license:check && npm run build",
-    "build:cp": "copy-and-watch \"src/**/_*.scss\" build",
+    "build:cp": "copy-and-watch \"src/**/*.scss\" build",
     "build:sass": "sass --load-path=node_modules --silence-deprecation=mixed-decls src/main.scss build/main.css",
     "build": "npm-run-all build:*",
     "start:cp": "npm run build:cp -- --watch",
@@ -37,13 +37,15 @@
     "start:example": "serve example",
     "start": "npm-run-all --parallel start:*"
   },
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  },
   "devDependencies": {
     "@har79/config": "workspace:^",
     "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
     "copy-and-watch": "^0.1.8",
     "depcheck": "^1.4.7",
     "license-checker": "^25.0.1",
-    "normalize.css": "^8.0.1",
     "npm-run-all": "^4.1.5",
     "oss-attribution-generator": "^1.7.1",
     "prettier": "^3.5.3",
