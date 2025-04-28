@@ -5,6 +5,8 @@
 @use './typography';
 @use 'sass:selector';
 
+$header-height: 4rem !default;
+
 .nav {
   // Display
   display: flex;
@@ -76,7 +78,7 @@
     }
 
     // Box
-    margin-block-start: calc(4rem + 1px);
+    margin-block-start: calc($header-height + 1px);
     padding-block: 0 1rem;
     padding-inline: 0;
     flex-flow: column;
