@@ -2,8 +2,10 @@
 @use './color';
 
 $font-family: futura, sans-serif;
+$weight-normal: 400;
+$weight-bold: 700;
 
-@mixin font($scale, $weight: 400, $set-color: true) {
+@mixin font($scale, $weight: $weight-normal, $set-color: true) {
   $size: math.pow(math.$phi, $scale * 0.5) * 1rem;
   $height: math.ceil($size + 0.5rem, 0.5);
 
@@ -28,7 +30,7 @@ $font-family: futura, sans-serif;
 }
 
 @mixin section-heading($args...) {
-  @include font(1, $weight: 600, $args...);
+  @include font(1, $weight: $weight-bold, $args...);
 }
 
 @mixin body($args...) {
